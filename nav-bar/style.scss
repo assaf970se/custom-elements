@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'md4';
+    src: local('md4'),
+        url(https://info.wixanswers.com/rs/314-AVR-999/images/WixMadeforDisplay_Rg.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'md4';
+    src: local('md4'),
+        url(https://info.wixanswers.com/rs/314-AVR-999/images/WixMadeforDisplay_Bd.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'md4';
+    src: local('md4'),
+        url(https://info.wixanswers.com/rs/314-AVR-999/images/WixMadeforDisplay_XBd.ttf);
+    font-weight: 900;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: md4;
+}
+
+.nav-links-container {
+    --link-color: #2d70f7;
+    --nav-link-width: 125px;
+
+    --whyanswers-nav-background-width: 250;
+    --whyanswers-nav-background-height: 220;
+    --whyanswers-nav-background-width-px: 250px;
+    --whyanswers-nav-background-height-px: 220px;
+
+    --platform-nav-background-width: 700;
+    --platform-nav-background-height: 350;
+    --platform-nav-background-width-px: 700px;
+    --platform-nav-background-height-px: 350px;
+
+    --solutions-nav-background-width: 250;
+    --solutions-nav-background-height: 130;
+    --solutions-nav-background-width-px: 250px;
+    --solutions-nav-background-height-px: 130px;
+
+    --explore-nav-background-width: 250;
+    --explore-nav-background-height: 290;
+    --explore-nav-background-width-px: 250px;
+    --explore-nav-background-height-px: 290px;
+
+    height: 100%;
+    flex-grow: 2;
+}
+
+.nav-links-link-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .nav-links-link {
+        cursor: default;
+        width: var(--nav-link-width);
+        text-decoration: none;
+        font-weight: 400;
+        height: 100%;
+        line-height: 70px;
+        background: none;
+        border: none;
+        outline: none;
+
+        &.nav-links-link-pricing {
+            cursor: pointer;
+
+            &:hover {
+                color: var(--link-color);
+            }
+        }
+    }
+}
+
+.nav-links-content {
+    position: absolute;
+    background: #fff;
+    opacity: 0;
+    top: 60px;
+    padding: 30px 0px 30px 40px;
+    display: flex;
+    justify-content: flex-start;
+    z-index: 100;
+    box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25),
+        0 30px 60px -30px rgba(0, 0, 0, 0.3);
+    color: transparent;
+    transition: opacity 0.4s, color 0.4s 0.1s;
+
+    &#why-answers {
+        width: var(--whyanswers-nav-background-width-px);
+        height: var(--whyanswers-nav-background-height-px);
+        left: 0;
+    }
+
+    &#platform {
+        left: 125px;
+        width: var(--platform-nav-background-width-px);
+        height: var(--platform-nav-background-height-px);
+        z-index: 150;
+    }
+    &#solutions {
+        left: 250px;
+        height: var(--solutions-nav-background-height-px);
+        z-index: 150;
+    }
+    &#explore {
+        left: 500px;
+        display: flex;
+        height: var(--explore-nav-background-height-px);
+        width: var(--whyanswers-nav-background-width-px);
+        z-index: 150;
+    }
+    &#pricing {
+        left: 350px;
+    }
+
+    &.why-answers {
+        opacity: 1;
+        color: #000000;
+        z-index: 150;
+    }
+    &.platform {
+        opacity: 1;
+        color: #000000;
+    }
+    &.solutions {
+        opacity: 1;
+        color: #000000;
+    }
+    &.explore {
+        opacity: 1;
+        color: #000000;
+    }
+
+    .nav-links-link-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-right: 60px;
+        height: 100%;
+
+        h4 {
+            margin-bottom: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        & > p,
+        & > a {
+            color: inherit;
+            font-size: 14px;
+            margin-bottom: 22px;
+            font-weight: 400;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--link-color);
+            }
+        }
+    }
+}

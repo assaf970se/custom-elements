@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>web components - advanced</title>
+    <script src="wa-nav-bar.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        @font-face {
+            font-family: "md4";
+            src: local("md4"), url(https://info.wixanswers.com/rs/314-AVR-999/images/WixMadeforDisplay_Rg.ttf);
+            font-weight: 400;
+          }
+          @font-face {
+            font-family: "md4";
+            src: local("md4"), url(https://info.wixanswers.com/rs/314-AVR-999/images/WixMadeforDisplay_Bd.ttf);
+            font-weight: 700;
+          }
+          @font-face {
+            font-family: "md4";
+            src: local("md4"), url(https://info.wixanswers.com/rs/314-AVR-999/images/WixMadeforDisplay_XBd.ttf);
+            font-weight: 900;
+          }
+          * {
+            box-sizing: border-box;
+            font-family: md4;
+          }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="nav-links-container">
+        <div class="nav-links-link-container" id="nav-links-link-container" onmouseleave="setActiveLink('')">
+            <button class="nav-links-link" onmouseover="setActiveLink('why-answers')">
+                Why Answers?
+            </button>
+            <button class="nav-links-link" onmouseover="setActiveLink('platform')">
+                Platform
+            </button>
+            <button class="nav-links-link" onmouseover="setActiveLink('solutions')">
+                Solutions
+            </button>
+            <button class="nav-links-link nav-links-link-pricing" onmouseover="setActiveLink('pricing')">
+                Pricing
+            </button>
+            <button class="nav-links-link" onmouseover="setActiveLink('explore')">
+                Explore
+            </button>
+            <div class="nav-links-content" id="why-answers">
+                <div class="nav-links-link-col">
+                    <a href="">Why we're different</a>
+                    <a href="">Results with Answers</a>
+                    <a href="">Customer stories</a>
+                    <a href="">CS solutions for 2021</a>
+                </div>
+            </div>
+            <div class="nav-links-content" id="platform">
+                <div class="nav-links-link-col">
+                    <h4>Overview</h4>
+                    <a href="">Full CS solution</a>
+                    <a href="">Integrations</a>
+                </div>
+                <div class="nav-links-link-col">
+                    <h4>Products</h4>
+                    <a href="">Knowledge management</a>
+                    <a href="">Tickting system</a>
+                    <a href="">Call center</a>
+                    <a href="">Widgets</a>
+                    <a href="">Live chat</a>
+                    <a href="">Insights</a>
+                </div>
+                <div class="nav-links-link-col">
+                    <h4>Boosters</h4>
+                    <a href="">Spotter</a>
+                    <a href="">Control room</a>
+                    <a href="">Top Issues</a>
+                    <a href="">Built-in CSAT</a>
+                </div>
+            </div>
+            <div class="nav-links-content" id="solutions">
+                <div class="nav-links-link-col">
+                    <a href="">SMB</a>
+                    <a href="">Enterprise</a>
+                </div>
+            </div>
+            <div class="nav-links-content" id="pricing"></div>
+            <div class="nav-links-content" id="explore">
+                <div class="nav-links-link-col">
+                    <a href="">CS Tech Assessment</a>
+                    <a href="">CX Library</a>
+                    <a href="">Blog</a>
+                    <a href="">Help Center</a>
+                    <a href="">Video Tutorials</a>
+                    <a href="">Developer Tools</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <wa-nav-bar></wa-nav-bar>
+    <!-- <script>
+        activeLink = '';
+
+        function setActiveLink(linkStr) {
+            if (activeLink) {
+                document.getElementById(activeLink).classList.remove(activeLink);
+            }
+
+            if (linkStr) {
+                document.getElementById(linkStr).classList.add(linkStr);
+            }
+
+            activeLink = linkStr;
+        }
+    </script> -->
+</body>
+
+</html>

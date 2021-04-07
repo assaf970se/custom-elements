@@ -1,0 +1,131 @@
+.quote-gallery-section {
+    font-family: 'md4', sans-serif;
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 1120px;
+    height: 360px;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 3px rgba($color: #000000, $alpha: 0.15);
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .quote-gallery-section__buttons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 220px;
+
+        @media screen and (max-width: 767px) {
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .quote-gallery-section__button {
+            cursor: pointer;
+            width: 100%;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #f2f7ff;
+
+            &.active-btn {
+                background-color: #ffffff;
+            }
+
+            & img {
+                width: 100%;
+            }
+
+            @media screen and (max-width: 767px) {
+                height: 70px;
+            }
+
+            @media screen and (max-width: 600px) {
+                padding: 0 25px;
+            }
+
+            &:first-child {
+                border-top-left-radius: 10px;
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 10px;
+
+                @media screen and (max-width: 767px) {
+                    border-bottom-left-radius: 0;
+                    border-top-right-radius: 10px;
+                }
+            }
+        }
+    }
+
+    .quote-gallery-section__quote-container {
+        width: 520px;
+        padding: 30px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .quote-gallery-section__quote {
+            font-size: 20px;
+            line-height: 30px;
+
+            @media screen and (max-width: 767px) {
+                font-size: 14px;
+            }
+        }
+
+        .quote-gallery-section__quote-name-title {
+            font-size: 16px;
+            line-height: 25px;
+
+            @media screen and (max-width: 767px) {
+                font-size: 11px;
+                line-height: normal;
+            }
+        }
+
+        .quote-gallery-section__quote-link {
+            font-size: 14px;
+            color: var(--link-color);
+
+            @media screen and (max-width: 767px) {
+                font-size: 11px;
+            }
+        }
+    }
+
+    .quote-gallery-section__img-container {
+        width: 380px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        @media screen and (max-width: 767px) {
+            display: none;
+            width: 100%;
+            border-radius: 0;
+        }
+
+        & img {
+            width: 100%;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            @media screen and (max-width: 767px) {
+                border-radius: 0;
+            }
+        }
+    }
+}
