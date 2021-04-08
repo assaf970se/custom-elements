@@ -1,17 +1,28 @@
 * {
     box-sizing: border-box;
     font-family: 'Madefor Display', sans-serif;
-    --link-color: #2d70f7;
-    --text-white-color: #fff;
-    --link-font-size: 14px;
 }
 
 .wa-navbar-container {
+    --main-text-color: #002764;
+    --link-color: #2288f9;
+    --text-white-color: #fff;
+    --nav-section-title-color: #99a9c1;
+    --nav-section-divider-color: #ccd4e0;
+    --link-font-size: 15px;
+    --btn-link-font-size: 13px;
+    --btn-link-width: 160px;
+    --btn-link-height: 42px;
+    
+    
+    box-sizing: border-box;
+    font-family: 'Madefor Display', sans-serif;
     display: flex;
     justify-content: space-around;
     align-items: baseline;
     padding-right: 20px;
     padding-left: 20px;
+    color: var(--main-text-color);
 
     .nav-logo-container {
         min-width: 160px;
@@ -28,25 +39,17 @@
     .nav-links-container {
         --nav-link-width: 125px;
 
-        --whyanswers-nav-background-width: 250;
-        --whyanswers-nav-background-height: 220;
-        --whyanswers-nav-background-width-px: 250px;
-        --whyanswers-nav-background-height-px: 220px;
+        --whyanswers-nav-background-width-px: 240px;
+        --whyanswers-nav-background-height-px: 240px;
 
-        --platform-nav-background-width: 700;
-        --platform-nav-background-height: 350;
-        --platform-nav-background-width-px: 700px;
-        --platform-nav-background-height-px: 350px;
+        --platform-nav-background-width-px: 650px;
+        --platform-nav-background-height-px: 370px;
 
-        --solutions-nav-background-width: 250;
-        --solutions-nav-background-height: 130;
-        --solutions-nav-background-width-px: 250px;
-        --solutions-nav-background-height-px: 130px;
+        --solutions-nav-background-width-px: 170px;
+        --solutions-nav-background-height-px: 170px;
 
-        --explore-nav-background-width: 250;
-        --explore-nav-background-height: 290;
-        --explore-nav-background-width-px: 250px;
-        --explore-nav-background-height-px: 290px;
+        --explore-nav-background-width-px: 270px;
+        --explore-nav-background-height-px: 320px;
 
         height: 70px;
         flex-grow: 2;
@@ -70,6 +73,8 @@
             background: none;
             border: none;
             outline: none;
+            color: var(--main-text-color);
+            letter-spacing: 0.4px;
 
             &.nav-links-link-pricing {
                 cursor: pointer;
@@ -87,12 +92,14 @@
         visibility: hidden;
         opacity: 0;
         top: 60px;
-        padding: 30px 0px 30px 40px;
+        border-radius: 6px;
         display: flex;
-        justify-content: flex-start;
+        letter-spacing: 0.4px;
+        justify-content: space-evenly;
         z-index: 100;
+        padding-top: 50px;
         transform-origin: center -100px;
-        transform: rotateX(-5deg);
+        transform: rotateX(-10deg);
         box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25),
             0 30px 60px -30px rgba(0, 0, 0, 0.3);
         transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
@@ -111,6 +118,7 @@
         }
         &#solutions {
             left: 250px;
+            width: var(--solutions-nav-background-width-px);
             height: var(--solutions-nav-background-height-px);
             z-index: 150;
         }
@@ -127,26 +135,29 @@
 
         &.why-answers {
             opacity: 1;
-            color: #000000;
             z-index: 150;
             visibility: visible;
             transform: rotateX(0);
         }
         &.platform {
             opacity: 1;
-            color: #000000;
             visibility: visible;
             transform: rotateX(0);
+
+            .nav-link-divider {
+                width: 2px;
+                height: 240px;
+                border: solid 1px #ccd4e0;
+                align-self: flex-start;
+            }
         }
         &.solutions {
             opacity: 1;
-            color: #000000;
             visibility: visible;
             transform: rotateX(0);
         }
         &.explore {
             opacity: 1;
-            color: #000000;
             visibility: visible;
             transform: rotateX(0);
         }
@@ -155,11 +166,10 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin-right: 60px;
-            height: 100%;
 
             h4 {
-                color: darkblue;
+                margin-top: 0;
+                color: var(--nav-section-title-color);
                 margin-bottom: 25px;
                 font-size: 14px;
                 font-weight: 700;
@@ -167,12 +177,21 @@
             }
 
             & > p,
-            & > a {
+            & > a,
+            & > button {
+                cursor: pointer;
                 color: inherit;
-                font-size: 14px;
-                margin-bottom: 22px;
+                background: none;
+                outline: none;
+                border: none;
+                text-align: left;
+                font-size: var(--link-font-size);
                 font-weight: 400;
                 text-decoration: none;
+
+                &:not(:last-child) {
+                    margin-bottom: 18px;
+                }
 
                 &:hover {
                     color: var(--link-color);
@@ -187,6 +206,7 @@
 
         & .nav-cta-type-1 {
             cursor: pointer;
+            font-size: var(--link-font-size);
             text-decoration: none;
             font-weight: 400;
             width: 75px;
@@ -201,40 +221,44 @@
         }
         & .nav-cta-type-2 {
             cursor: pointer;
+            font-size: var(--btn-link-font-size);
             text-decoration: none;
             font-weight: 400;
-            height: 40px;
-            width: 130px;
+            height: var(--btn-link-height);
+            width: var(--btn-link-width);
             background: var(--link-color);
             color: var(--text-white-color);
-            border-radius: 50px;
+            border-radius: 20px;
             border: none;
             outline: none;
             margin-right: 20px;
+            letter-spacing: 0.8px;
             opacity: 1;
+            text-transform: uppercase;
             transition: opacity 0.5s;
-
+            
             &:hover {
                 opacity: 0.8;
             }
         }
         & .nav-cta-type-3 {
+            font-size: var(--btn-link-font-size);
             cursor: pointer;
             text-decoration: none;
             font-weight: 400;
-            height: 40px;
-            width: 130px;
+            text-transform: uppercase;
+            height: var(--btn-link-height);
+            width: var(--btn-link-width);
             color: var(--link-color);
             background: var(--text-white-color);
             border: 1px solid var(--link-color);
-            border-radius: 50px;
+            border-radius: 20px;
+            letter-spacing: 0.8px;
             outline: none;
             transition: color 0.5s, background 0.5s, border 0.5s;
 
             &:hover {
-                color: var(--text-white-color);
-                background: var(--link-color);
-                border: 1px solid var(--text-white-color);
+                opacity: 0.8;
             }
         }
     }
