@@ -13,11 +13,13 @@
   --btn-link-font-size: 13px;
   --btn-link-width: 160px;
   --btn-link-height: 42px;
+  box-sizing: border-box;
+  font-family: "Madefor Display", sans-serif;
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 60px;
+  padding-left: 60px;
   color: var(--main-text-color);
 }
 .wa-navbar-container .nav-logo-container {
@@ -25,19 +27,19 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  margin-right: 30px;
+  margin-right: 60px;
 }
 .wa-navbar-container .nav-logo-container img {
   width: 100%;
 }
 .wa-navbar-container .nav-links-container {
-  --nav-link-width: 125px;
+  --nav-link-width: 120px;
   --whyanswers-nav-background-width-px: 240px;
   --whyanswers-nav-background-height-px: 240px;
   --platform-nav-background-width-px: 650px;
   --platform-nav-background-height-px: 370px;
-  --solutions-nav-background-width-px: 170px;
-  --solutions-nav-background-height-px: 170px;
+  --solutions-nav-background-width-px: 480px;
+  --solutions-nav-background-height-px: 280px;
   --explore-nav-background-width-px: 270px;
   --explore-nav-background-height-px: 320px;
   height: 70px;
@@ -51,6 +53,7 @@
   align-items: center;
 }
 .wa-navbar-container .nav-links-link-container .nav-links-link {
+  padding: 0;
   cursor: default;
   width: var(--nav-link-width);
   text-decoration: none;
@@ -84,7 +87,7 @@
   padding-top: 50px;
   transform-origin: center -100px;
   transform: rotateX(-10deg);
-  box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px -50px #e9e7e7;
   transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
 }
 .wa-navbar-container .nav-links-content#why-answers {
@@ -178,6 +181,7 @@
 }
 .wa-navbar-container .nav-cta-container .nav-cta-type-1 {
   cursor: pointer;
+  color: var(--main-text-color);
   font-size: var(--link-font-size);
   text-decoration: none;
   font-weight: 400;

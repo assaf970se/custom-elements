@@ -5,6 +5,8 @@ class WaNavBar extends HTMLElement {
         this.NAV_BAR_MAP = {
             LOGO: {
                 link: 'https://www.wixanswers.com',
+                type: 'logo',
+                src: 'https://static.wixstatic.com/shapes/dba05e_67c23a413b1744d5b7084696c38a9f52.svg'
             },
             NAV_LINKS: {
                 WHY_ANSWERS: {
@@ -109,16 +111,42 @@ class WaNavBar extends HTMLElement {
                 },
                 SOLUTIONS: {
                     text: 'Solutions',
-                    SMB: {
-                        elId: 'sl-smb-link',
-                        text: 'SMB',
-                        link: 'https://www.wixanswers.com/smb',
+                    COMPANY_TYPE: {
+                      text: 'COMPANY TYPE',
+                      SMB: {
+                          elId: 'sl-ct-smb-link',
+                          text: 'SMB',
+                          link: 'https://www.wixanswers.com/smb',
+                      },
+                      ENTERPRISE: {
+                          elId: 'sl-ct-ent-link',
+                          text: 'Enterprise',
+                          link: 'https://www.wixanswers.com/enterprise',
+                      }
                     },
-                    ENTERPRISE: {
-                        elId: 'sl-ent-link',
-                        text: 'Enterprise',
-                        link: 'https://www.wixanswers.com/enterprise',
-                    },
+                    USE_CASE: {
+                      text: 'USE CASE',
+                      OMNICHANNEL_SUPPORT: {
+                        elId: 'sl-uc-os-link',
+                        text: 'Omnichannel Support',
+                        link: 'https://www.wixanswers.com/omnichannel-support'
+                      },
+                      SELF_SERVICE: {
+                        elId: 'sl-uc-ss-link',
+                        text: 'Self-service',
+                        link: 'https://www.wixanswers.com/self-service'
+                      },
+                      PROACTIVE_SUPPORT: {
+                        elId: 'sl-uc-ps-link',
+                        text: 'Proactive Support',
+                        link: 'https://www.wixanswers.com/proactive-support'
+                      },
+                      CUSTOMER_INTERACTIONS: {
+                        elId: 'sl-uc-ci-link',
+                        text: 'Customer Interactions',
+                        link: 'https://www.wixanswers.com/customer-interactions'
+                      },
+                    }
                 },
                 PRICING: {
                     elId: 'nav-links-link-pricing',
@@ -130,8 +158,7 @@ class WaNavBar extends HTMLElement {
                     TECH_ASSESSMENT: {
                         elId: 'ex-ta-link',
                         text: 'CS Tech Assessment',
-                        link:
-                            'https://app.wixanswers.com/assessment?_ga=2.180617447.1349779728.1617533070-748958510.1597566763',
+                        link:'https://app.wixanswers.com/assessment?_ga=2.180617447.1349779728.1617533070-748958510.1597566763',
                     },
                     CX_LIBRARY: {
                         elId: 'ex-cxlib-link',
@@ -167,243 +194,247 @@ class WaNavBar extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
           <style>
-          * {
-          box-sizing: border-box;
-          font-family: "Madefor Display", sans-serif;
-        }
-        
-        .wa-navbar-container {
-          --main-text-color: #002764;
-          --link-color: #2288f9;
-          --text-white-color: #fff;
-          --nav-section-title-color: #99a9c1;
-          --nav-section-divider-color: #ccd4e0;
-          --link-font-size: 15px;
-          --btn-link-font-size: 13px;
-          --btn-link-width: 160px;
-          --btn-link-height: 42px;
-          display: flex;
-          justify-content: space-around;
-          align-items: baseline;
-          padding-right: 20px;
-          padding-left: 20px;
-          color: var(--main-text-color);
-        }
-        .wa-navbar-container .nav-logo-container {
-          min-width: 160px;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          margin-right: 30px;
-        }
-        .wa-navbar-container .nav-logo-container img {
-          width: 100%;
-        }
-        .wa-navbar-container .nav-links-container {
-          --nav-link-width: 125px;
-          --whyanswers-nav-background-width-px: 240px;
-          --whyanswers-nav-background-height-px: 240px;
-          --platform-nav-background-width-px: 650px;
-          --platform-nav-background-height-px: 370px;
-          --solutions-nav-background-width-px: 170px;
-          --solutions-nav-background-height-px: 170px;
-          --explore-nav-background-width-px: 270px;
-          --explore-nav-background-height-px: 320px;
-          height: 70px;
-          flex-grow: 2;
-          perspective: 2000px;
-        }
-        .wa-navbar-container .nav-links-link-container {
-          position: relative;
-          height: 100%;
-          display: flex;
-          align-items: center;
-        }
-        .wa-navbar-container .nav-links-link-container .nav-links-link {
-          cursor: default;
-          width: var(--nav-link-width);
-          text-decoration: none;
-          font-size: var(--link-font-size);
-          font-weight: 400;
-          height: 100%;
-          line-height: 70px;
-          background: none;
-          border: none;
-          outline: none;
-          color: var(--main-text-color);
-          letter-spacing: 0.4px;
-        }
-        .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing {
-          cursor: pointer;
-        }
-        .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing:hover {
-          color: var(--link-color);
-        }
-        .wa-navbar-container .nav-links-content {
-          position: absolute;
-          background: #fff;
-          visibility: hidden;
-          opacity: 0;
-          top: 60px;
-          border-radius: 6px;
-          display: flex;
-          letter-spacing: 0.4px;
-          justify-content: space-evenly;
-          z-index: 100;
-          padding-top: 50px;
-          transform-origin: center -100px;
-          transform: rotateX(-10deg);
-          box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
-          transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
-        }
-        .wa-navbar-container .nav-links-content#why-answers {
-          width: var(--whyanswers-nav-background-width-px);
-          height: var(--whyanswers-nav-background-height-px);
-          left: 0;
-        }
-        .wa-navbar-container .nav-links-content#platform {
-          left: 125px;
-          width: var(--platform-nav-background-width-px);
-          height: var(--platform-nav-background-height-px);
-          z-index: 150;
-        }
-        .wa-navbar-container .nav-links-content#solutions {
-          left: 250px;
-          width: var(--solutions-nav-background-width-px);
-          height: var(--solutions-nav-background-height-px);
-          z-index: 150;
-        }
-        .wa-navbar-container .nav-links-content#explore {
-          left: 500px;
-          display: flex;
-          height: var(--explore-nav-background-height-px);
-          width: var(--whyanswers-nav-background-width-px);
-          z-index: 150;
-        }
-        .wa-navbar-container .nav-links-content#pricing {
-          left: 350px;
-        }
-        .wa-navbar-container .nav-links-content.why-answers {
-          opacity: 1;
-          z-index: 150;
-          visibility: visible;
-          transform: rotateX(0);
-        }
-        .wa-navbar-container .nav-links-content.platform {
-          opacity: 1;
-          visibility: visible;
-          transform: rotateX(0);
-        }
-        .wa-navbar-container .nav-links-content.platform .nav-link-divider {
-          width: 2px;
-          height: 240px;
-          border: solid 1px #ccd4e0;
-          align-self: flex-start;
-        }
-        .wa-navbar-container .nav-links-content.solutions {
-          opacity: 1;
-          visibility: visible;
-          transform: rotateX(0);
-        }
-        .wa-navbar-container .nav-links-content.explore {
-          opacity: 1;
-          visibility: visible;
-          transform: rotateX(0);
-        }
-        .wa-navbar-container .nav-links-content .nav-links-link-col {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-        }
-        .wa-navbar-container .nav-links-content .nav-links-link-col h4 {
-          margin-top: 0;
-          color: var(--nav-section-title-color);
-          margin-bottom: 25px;
-          font-size: 14px;
-          font-weight: 700;
-          text-transform: uppercase;
-        }
-        .wa-navbar-container .nav-links-content .nav-links-link-col > p, .wa-navbar-container .nav-links-content .nav-links-link-col > a, .wa-navbar-container .nav-links-content .nav-links-link-col > button {
-          cursor: pointer;
-          color: inherit;
-          background: none;
-          outline: none;
-          border: none;
-          text-align: left;
-          font-size: var(--link-font-size);
-          font-weight: 400;
-          text-decoration: none;
-        }
-        .wa-navbar-container .nav-links-content .nav-links-link-col > p:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > a:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > button:not(:last-child) {
-          margin-bottom: 18px;
-        }
-        .wa-navbar-container .nav-links-content .nav-links-link-col > p:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > a:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > button:hover {
-          color: var(--link-color);
-        }
-        .wa-navbar-container .nav-cta-container {
-          height: 100%;
-          display: flex;
-          align-items: center;
-        }
-        .wa-navbar-container .nav-cta-container .nav-cta-type-1 {
-          cursor: pointer;
-          font-size: var(--link-font-size);
-          text-decoration: none;
-          font-weight: 400;
-          width: 75px;
-          background: none;
-          border: none;
-          outline: none;
-          margin-right: 20px;
-        }
-        .wa-navbar-container .nav-cta-container .nav-cta-type-1:hover {
-          color: var(--link-color);
-        }
-        .wa-navbar-container .nav-cta-container .nav-cta-type-2 {
-          cursor: pointer;
-          font-size: var(--btn-link-font-size);
-          text-decoration: none;
-          font-weight: 400;
-          height: var(--btn-link-height);
-          width: var(--btn-link-width);
-          background: var(--link-color);
-          color: var(--text-white-color);
-          border-radius: 20px;
-          border: none;
-          outline: none;
-          margin-right: 20px;
-          letter-spacing: 0.8px;
-          opacity: 1;
-          text-transform: uppercase;
-          transition: opacity 0.5s;
-        }
-        .wa-navbar-container .nav-cta-container .nav-cta-type-2:hover {
-          opacity: 0.8;
-        }
-        .wa-navbar-container .nav-cta-container .nav-cta-type-3 {
-          font-size: var(--btn-link-font-size);
-          cursor: pointer;
-          text-decoration: none;
-          font-weight: 400;
-          text-transform: uppercase;
-          height: var(--btn-link-height);
-          width: var(--btn-link-width);
-          color: var(--link-color);
-          background: var(--text-white-color);
-          border: 1px solid var(--link-color);
-          border-radius: 20px;
-          letter-spacing: 0.8px;
-          outline: none;
-          transition: color 0.5s, background 0.5s, border 0.5s;
-        }
-        .wa-navbar-container .nav-cta-container .nav-cta-type-3:hover {
-          opacity: 0.8;
-        }
+            * {
+              box-sizing: border-box;
+              font-family: "Madefor Display", sans-serif;
+            }
+            
+            .wa-navbar-container {
+              --main-text-color: #002764;
+              --link-color: #2288f9;
+              --text-white-color: #fff;
+              --nav-section-title-color: #99a9c1;
+              --nav-section-divider-color: #ccd4e0;
+              --link-font-size: 15px;
+              --btn-link-font-size: 13px;
+              --btn-link-width: 160px;
+              --btn-link-height: 42px;
+              box-sizing: border-box;
+              font-family: "Madefor Display", sans-serif;
+              display: flex;
+              justify-content: space-around;
+              align-items: baseline;
+              padding-right: 60px;
+              padding-left: 60px;
+              color: var(--main-text-color);
+            }
+            .wa-navbar-container .nav-logo-container {
+              min-width: 160px;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              margin-right: 60px;
+            }
+            .wa-navbar-container .nav-logo-container img {
+              width: 100%;
+            }
+            .wa-navbar-container .nav-links-container {
+              --nav-link-width: 120px;
+              --whyanswers-nav-background-width-px: 240px;
+              --whyanswers-nav-background-height-px: 240px;
+              --platform-nav-background-width-px: 650px;
+              --platform-nav-background-height-px: 370px;
+              --solutions-nav-background-width-px: 480px;
+              --solutions-nav-background-height-px: 280px;
+              --explore-nav-background-width-px: 270px;
+              --explore-nav-background-height-px: 320px;
+              height: 70px;
+              flex-grow: 2;
+              perspective: 2000px;
+            }
+            .wa-navbar-container .nav-links-link-container {
+              position: relative;
+              height: 100%;
+              display: flex;
+              align-items: center;
+            }
+            .wa-navbar-container .nav-links-link-container .nav-links-link {
+              padding: 0;
+              cursor: default;
+              width: var(--nav-link-width);
+              text-decoration: none;
+              font-size: var(--link-font-size);
+              font-weight: 400;
+              height: 100%;
+              line-height: 70px;
+              background: none;
+              border: none;
+              outline: none;
+              color: var(--main-text-color);
+              letter-spacing: 0.4px;
+            }
+            .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing {
+              cursor: pointer;
+            }
+            .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing:hover {
+              color: var(--link-color);
+            }
+            .wa-navbar-container .nav-links-content {
+              position: absolute;
+              background: #fff;
+              visibility: hidden;
+              opacity: 0;
+              top: 60px;
+              border-radius: 6px;
+              display: flex;
+              letter-spacing: 0.4px;
+              justify-content: space-evenly;
+              z-index: 100;
+              padding-top: 50px;
+              transform-origin: center -100px;
+              transform: rotateX(-10deg);
+              box-shadow: 0 30px 60px -50px #e9e7e7;
+              transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
+            }
+            .wa-navbar-container .nav-links-content#why-answers {
+              width: var(--whyanswers-nav-background-width-px);
+              height: var(--whyanswers-nav-background-height-px);
+              left: 0;
+            }
+            .wa-navbar-container .nav-links-content#platform {
+              left: 125px;
+              width: var(--platform-nav-background-width-px);
+              height: var(--platform-nav-background-height-px);
+              z-index: 150;
+            }
+            .wa-navbar-container .nav-links-content#solutions {
+              left: 250px;
+              width: var(--solutions-nav-background-width-px);
+              height: var(--solutions-nav-background-height-px);
+              z-index: 150;
+            }
+            .wa-navbar-container .nav-links-content#explore {
+              left: 500px;
+              display: flex;
+              height: var(--explore-nav-background-height-px);
+              width: var(--whyanswers-nav-background-width-px);
+              z-index: 150;
+            }
+            .wa-navbar-container .nav-links-content#pricing {
+              left: 350px;
+            }
+            .wa-navbar-container .nav-links-content.why-answers {
+              opacity: 1;
+              z-index: 150;
+              visibility: visible;
+              transform: rotateX(0);
+            }
+            .wa-navbar-container .nav-links-content.platform {
+              opacity: 1;
+              visibility: visible;
+              transform: rotateX(0);
+            }
+            .wa-navbar-container .nav-links-content.platform .nav-link-divider {
+              width: 2px;
+              height: 240px;
+              border: solid 1px #ccd4e0;
+              align-self: flex-start;
+            }
+            .wa-navbar-container .nav-links-content.solutions {
+              opacity: 1;
+              visibility: visible;
+              transform: rotateX(0);
+            }
+            .wa-navbar-container .nav-links-content.explore {
+              opacity: 1;
+              visibility: visible;
+              transform: rotateX(0);
+            }
+            .wa-navbar-container .nav-links-content .nav-links-link-col {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+            }
+            .wa-navbar-container .nav-links-content .nav-links-link-col h4 {
+              margin-top: 0;
+              color: var(--nav-section-title-color);
+              margin-bottom: 25px;
+              font-size: 14px;
+              font-weight: 700;
+              text-transform: uppercase;
+            }
+            .wa-navbar-container .nav-links-content .nav-links-link-col > p, .wa-navbar-container .nav-links-content .nav-links-link-col > a, .wa-navbar-container .nav-links-content .nav-links-link-col > button {
+              cursor: pointer;
+              color: inherit;
+              background: none;
+              outline: none;
+              border: none;
+              text-align: left;
+              font-size: var(--link-font-size);
+              font-weight: 400;
+              text-decoration: none;
+            }
+            .wa-navbar-container .nav-links-content .nav-links-link-col > p:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > a:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > button:not(:last-child) {
+              margin-bottom: 18px;
+            }
+            .wa-navbar-container .nav-links-content .nav-links-link-col > p:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > a:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > button:hover {
+              color: var(--link-color);
+            }
+            .wa-navbar-container .nav-cta-container {
+              height: 100%;
+              display: flex;
+              align-items: center;
+            }
+            .wa-navbar-container .nav-cta-container .nav-cta-type-1 {
+              cursor: pointer;
+              color: var(--main-text-color);
+              font-size: var(--link-font-size);
+              text-decoration: none;
+              font-weight: 400;
+              width: 75px;
+              background: none;
+              border: none;
+              outline: none;
+              margin-right: 20px;
+            }
+            .wa-navbar-container .nav-cta-container .nav-cta-type-1:hover {
+              color: var(--link-color);
+            }
+            .wa-navbar-container .nav-cta-container .nav-cta-type-2 {
+              cursor: pointer;
+              font-size: var(--btn-link-font-size);
+              text-decoration: none;
+              font-weight: 400;
+              height: var(--btn-link-height);
+              width: var(--btn-link-width);
+              background: var(--link-color);
+              color: var(--text-white-color);
+              border-radius: 20px;
+              border: none;
+              outline: none;
+              margin-right: 20px;
+              letter-spacing: 0.8px;
+              opacity: 1;
+              text-transform: uppercase;
+              transition: opacity 0.5s;
+            }
+            .wa-navbar-container .nav-cta-container .nav-cta-type-2:hover {
+              opacity: 0.8;
+            }
+            .wa-navbar-container .nav-cta-container .nav-cta-type-3 {
+              font-size: var(--btn-link-font-size);
+              cursor: pointer;
+              text-decoration: none;
+              font-weight: 400;
+              text-transform: uppercase;
+              height: var(--btn-link-height);
+              width: var(--btn-link-width);
+              color: var(--link-color);
+              background: var(--text-white-color);
+              border: 1px solid var(--link-color);
+              border-radius: 20px;
+              letter-spacing: 0.8px;
+              outline: none;
+              transition: color 0.5s, background 0.5s, border 0.5s;
+            }
+            .wa-navbar-container .nav-cta-container .nav-cta-type-3:hover {
+              opacity: 0.8;
+            }
         </style>
-          
+
           <div class="wa-navbar-container">
             <div class="nav-logo-container">
-                <img src="https://static.wixstatic.com/shapes/dccc21_76128fb7b53b4e4c949b429504c9fdba.svg" alt="Wixanswers Logo" />
+                <img src=${this.NAV_BAR_MAP.LOGO.src} alt="Wixanswers Logo" />
             </div>
             <div class="nav-links-container">
                   <div class="nav-links-link-container" id="nav-links-link-container">
@@ -501,11 +532,27 @@ class WaNavBar extends HTMLElement {
                     id="solutions"
                   >
                     <div class="nav-links-link-col">
-                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.SMB.elId}>
-                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.SMB.text}
+                      <h4>${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.text}</h4>
+                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.elId}>
+                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.text}
                       </button>
-                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.ENTERPRISE.elId}>
-                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.ENTERPRISE.text}
+                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.elId}>
+                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.text}
+                      </button>
+                    </div>
+                    <div class="nav-links-link-col">
+                      <h4>${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.text}</h4>
+                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT.elId}>
+                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT.text}
+                      </button>
+                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE.elId}>
+                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE.text}
+                      </button>
+                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT.elId}>
+                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT.text}
+                      </button>
+                      <button id=${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS.elId}>
+                      ${this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS.text}
                       </button>
                     </div>
                   </div>
@@ -593,8 +640,12 @@ class WaNavBar extends HTMLElement {
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.CSAT);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.SMB);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.ENTERPRISE);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PRICING);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.TECH_ASSESSMENT);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.CX_LIBRARY);
@@ -608,7 +659,7 @@ class WaNavBar extends HTMLElement {
     addLinkEvent(navLinkObj) {
         return this.shadowRoot.getElementById(navLinkObj['elId'])
             .addEventListener('click', () =>
-                this.trackClickEvent(navLinkObj.link)
+                this.trackClickEvent(navLinkObj)
             );
     }
 
@@ -625,20 +676,20 @@ class WaNavBar extends HTMLElement {
         this.activeLink = linkStr;
     }
 
-    async trackClickEvent(redirectUrl = '') {
-        // const obj = {
-        //     uniqueId: 'customEl',
-        //     label: 'customEl',
-        //     name: 'customEl',
-        //     type: 'customEl',
-        //     linkTo: redirectUrl,
-        //     url: `${location.href}`,
-        // };
-        // const route = `https://app.wixanswers.com/api/bi/website-click?uniqueId=${obj.uniqueId}&type=${obj.type}&name=${obj.name}&url=${obj.url}&label=${obj.label}&linkTo=${obj.linkTo}`;
-        // const res = await fetch(route);
-        // const resText = await res.text();
-        // console.log(resText);
-        if (redirectUrl) window.location.href = redirectUrl;
+    async trackClickEvent(navLinkObj = {}) {
+        const obj = {
+          uniqueId: 'customEl',
+          label: navLinkObj.text || '',
+          name: 'customEl',
+          type: navLinkObj.type || 'Button',
+          linkTo: navLinkObj.link || '',
+          url: `${window.location.href}` || '',
+        };
+        const route = `https://app.wixanswers.com/api/bi/website-click?uniqueId=${obj.uniqueId}&type=${obj.type}&name=${obj.name}&url=${obj.url}&label=${obj.label}&linkTo=${obj.linkTo}`;
+        const res = await fetch(route);
+        const resText = await res.text();
+        console.log(resText);
+        if (navLinkObj.link) window.location.href = navLinkObj.link;
     }
 }
 
