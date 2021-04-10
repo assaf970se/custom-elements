@@ -32,6 +32,7 @@
         margin-right: 60px;
 
         img {
+            cursor: pointer;
             width: 100%;
         }
     }
@@ -76,6 +77,10 @@
             outline: none;
             color: var(--main-text-color);
             letter-spacing: 0.4px;
+
+            &.bold {
+                font-weight: bold;
+            }
 
             &.nav-links-link-pricing {
                 cursor: pointer;

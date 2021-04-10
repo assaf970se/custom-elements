@@ -1,16 +1,20 @@
 class WaNavBar extends HTMLElement {
     constructor() {
         super();
+        this._currentPageLinkFolder = '';
         this.activeLink = '';
         this.NAV_BAR_MAP = {
             LOGO: {
                 link: 'https://www.wixanswers.com',
                 type: 'logo',
-                src: 'https://static.wixstatic.com/shapes/dba05e_67c23a413b1744d5b7084696c38a9f52.svg'
+                elId: 'nav-logo',
+                text: 'logo',
+                src:'https://static.wixstatic.com/shapes/dba05e_67c23a413b1744d5b7084696c38a9f52.svg',
             },
             NAV_LINKS: {
                 WHY_ANSWERS: {
                     text: 'Why Answers?',
+                    elId: 'nav-links-link-why-answers',
                     WHY_WERE_DIFFERENT: {
                         elId: 'wa-wed-link',
                         text: "Why we're different",
@@ -35,6 +39,7 @@ class WaNavBar extends HTMLElement {
                 },
                 PLATFORM: {
                     text: 'Platform',
+                    elId: 'nav-links-link-platform',
                     OVERVIEW: {
                         text: 'OVERVIEW',
                         FULL_CS_SOLUTION: {
@@ -111,42 +116,46 @@ class WaNavBar extends HTMLElement {
                 },
                 SOLUTIONS: {
                     text: 'Solutions',
+                    elId: 'nav-links-link-solutions',
                     COMPANY_TYPE: {
-                      text: 'COMPANY TYPE',
-                      SMB: {
-                          elId: 'sl-ct-smb-link',
-                          text: 'SMB',
-                          link: 'https://www.wixanswers.com/smb',
-                      },
-                      ENTERPRISE: {
-                          elId: 'sl-ct-ent-link',
-                          text: 'Enterprise',
-                          link: 'https://www.wixanswers.com/enterprise',
-                      }
+                        text: 'COMPANY TYPE',
+                        SMB: {
+                            elId: 'sl-ct-smb-link',
+                            text: 'SMB',
+                            link: 'https://www.wixanswers.com/smb',
+                        },
+                        ENTERPRISE: {
+                            elId: 'sl-ct-ent-link',
+                            text: 'Enterprise',
+                            link: 'https://www.wixanswers.com/enterprise',
+                        },
                     },
                     USE_CASE: {
-                      text: 'USE CASE',
-                      OMNICHANNEL_SUPPORT: {
-                        elId: 'sl-uc-os-link',
-                        text: 'Omnichannel Support',
-                        link: 'https://www.wixanswers.com/omnichannel-support'
-                      },
-                      SELF_SERVICE: {
-                        elId: 'sl-uc-ss-link',
-                        text: 'Self-service',
-                        link: 'https://www.wixanswers.com/self-service'
-                      },
-                      PROACTIVE_SUPPORT: {
-                        elId: 'sl-uc-ps-link',
-                        text: 'Proactive Support',
-                        link: 'https://www.wixanswers.com/proactive-support'
-                      },
-                      CUSTOMER_INTERACTIONS: {
-                        elId: 'sl-uc-ci-link',
-                        text: 'Customer Interactions',
-                        link: 'https://www.wixanswers.com/customer-interactions'
-                      },
-                    }
+                        text: 'USE CASE',
+                        OMNICHANNEL_SUPPORT: {
+                            elId: 'sl-uc-os-link',
+                            text: 'Omnichannel Support',
+                            link:
+                                'https://www.wixanswers.com/omnichannel-support',
+                        },
+                        SELF_SERVICE: {
+                            elId: 'sl-uc-ss-link',
+                            text: 'Self-service',
+                            link: 'https://www.wixanswers.com/self-service',
+                        },
+                        PROACTIVE_SUPPORT: {
+                            elId: 'sl-uc-ps-link',
+                            text: 'Proactive Support',
+                            link:
+                                'https://www.wixanswers.com/proactive-support',
+                        },
+                        CUSTOMER_INTERACTIONS: {
+                            elId: 'sl-uc-ci-link',
+                            text: 'Customer Interactions',
+                            link:
+                                'https://www.wixanswers.com/customer-interactions',
+                        },
+                    },
                 },
                 PRICING: {
                     elId: 'nav-links-link-pricing',
@@ -155,10 +164,12 @@ class WaNavBar extends HTMLElement {
                 },
                 EXPLORE: {
                     text: 'Explore',
+                    elId: 'nav-links-link-explore',
                     TECH_ASSESSMENT: {
                         elId: 'ex-ta-link',
                         text: 'CS Tech Assessment',
-                        link:'https://app.wixanswers.com/assessment?_ga=2.180617447.1349779728.1617533070-748958510.1597566763',
+                        link:
+                            'https://app.wixanswers.com/assessment?_ga=2.180617447.1349779728.1617533070-748958510.1597566763',
                     },
                     CX_LIBRARY: {
                         elId: 'ex-cxlib-link',
@@ -226,6 +237,7 @@ class WaNavBar extends HTMLElement {
               margin-right: 60px;
             }
             .wa-navbar-container .nav-logo-container img {
+              cursor: pointer;
               width: 100%;
             }
             .wa-navbar-container .nav-links-container {
@@ -262,6 +274,9 @@ class WaNavBar extends HTMLElement {
               outline: none;
               color: var(--main-text-color);
               letter-spacing: 0.4px;
+            }
+            .wa-navbar-container .nav-links-link-container .nav-links-link.bold {
+              font-weight: bold;
             }
             .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing {
               cursor: pointer;
@@ -430,11 +445,11 @@ class WaNavBar extends HTMLElement {
             .wa-navbar-container .nav-cta-container .nav-cta-type-3:hover {
               opacity: 0.8;
             }
-        </style>
+            </style>
 
           <div class="wa-navbar-container">
             <div class="nav-logo-container">
-                <img src=${this.NAV_BAR_MAP.LOGO.src} alt="Wixanswers Logo" />
+                <img id="nav-logo" src=${this.NAV_BAR_MAP.LOGO.src} alt="Wixanswers Logo" />
             </div>
             <div class="nav-links-container">
                   <div class="nav-links-link-container" id="nav-links-link-container">
@@ -624,6 +639,7 @@ class WaNavBar extends HTMLElement {
             .getElementById('nav-links-link-explore')
             .addEventListener('mouseover', () => this.setActiveLink('explore'));
 
+        this.addLinkEvent(this.NAV_BAR_MAP.LOGO);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES);
@@ -653,14 +669,45 @@ class WaNavBar extends HTMLElement {
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.HELP_CENTER);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.VIDEO_TUTORIALS);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.DEVELOPER_TOOLS);
+    }
 
+    connectedCallback() {
+        if (this.hasAttribute('currentpagelinkfolder')) {
+            const linkFolder = this.getAttribute('currentpagelinkfolder');
+            this.setCurrentPageLinkFolder(linkFolder);
+        }
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'currentpagelinkfolder') {
+            if (oldValue === newValue) return;
+            if (newValue === '') return;
+            this.setCurrentPageLinkFolder(newValue);
+        }
+    }
+
+    static get observedAttributes() {
+        return ['currentpagelinkfolder'];
+    }
+
+    setCurrentPageLinkFolder(linkFolder) {
+        if (this._currentPageLinkFolder && this._currentPageLinkFolder !== 'home') {
+            this.shadowRoot
+                .getElementById(`nav-links-link-${this._currentPageLinkFolder}`)
+                .classList.remove('bold');
+        }
+        if (linkFolder && linkFolder !== 'home') {
+            this.shadowRoot
+                .getElementById(`nav-links-link-${linkFolder}`)
+                .classList.add('bold');
+        }
+        this._currentPageLinkFolder = linkFolder;
     }
 
     addLinkEvent(navLinkObj) {
-        return this.shadowRoot.getElementById(navLinkObj['elId'])
-            .addEventListener('click', () =>
-                this.trackClickEvent(navLinkObj)
-            );
+        return this.shadowRoot
+            .getElementById(navLinkObj['elId'])
+            .addEventListener('click', () => this.trackClickEvent(navLinkObj));
     }
 
     setActiveLink(linkStr) {
@@ -678,12 +725,12 @@ class WaNavBar extends HTMLElement {
 
     async trackClickEvent(navLinkObj = {}) {
         const obj = {
-          uniqueId: 'customEl',
-          label: navLinkObj.text || '',
-          name: 'customEl',
-          type: navLinkObj.type || 'Button',
-          linkTo: navLinkObj.link || '',
-          url: `${window.location.href}` || '',
+            uniqueId: 'customEl',
+            label: navLinkObj.text || '',
+            name: 'customEl',
+            type: navLinkObj.type || 'Button',
+            linkTo: navLinkObj.link || '',
+            url: `${window.location.href}` || '',
         };
         const route = `https://app.wixanswers.com/api/bi/website-click?uniqueId=${obj.uniqueId}&type=${obj.type}&name=${obj.name}&url=${obj.url}&label=${obj.label}&linkTo=${obj.linkTo}`;
         const res = await fetch(route);

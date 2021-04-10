@@ -30,6 +30,7 @@
   margin-right: 60px;
 }
 .wa-navbar-container .nav-logo-container img {
+  cursor: pointer;
   width: 100%;
 }
 .wa-navbar-container .nav-links-container {
@@ -66,6 +67,9 @@
   outline: none;
   color: var(--main-text-color);
   letter-spacing: 0.4px;
+}
+.wa-navbar-container .nav-links-link-container .nav-links-link.bold {
+  font-weight: bold;
 }
 .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing {
   cursor: pointer;
