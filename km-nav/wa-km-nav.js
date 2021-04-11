@@ -30,7 +30,7 @@ class WaKmNav extends HTMLElement {
           <style>
           * {
             box-sizing: border-box;
-            font-family: "Madefor", "Helvetica Neue", sans-serif;
+            font-family: "Madefor Display", sans-serif;
             margin: 0;
             padding: 0;
           }
@@ -58,6 +58,7 @@ class WaKmNav extends HTMLElement {
             height: 100%;
             color: var(--wa-km-nav-text-color);
             background-color: transparent;
+            letter-spacing: 0.6px;
             border: none;
             outline: none;
             font-size: var(--wa-km-nav-link-font-size);

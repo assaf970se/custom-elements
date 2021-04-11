@@ -291,7 +291,7 @@ class WaNavBar extends HTMLElement {
             border: none;
             outline: none;
             color: var(--main-text-color);
-            letter-spacing: 0.4px;
+            letter-spacing: 0.6px;
           }
           .wa-navbar-container .nav-links-link-container .nav-links-link.bold {
             font-weight: bold;
@@ -396,6 +396,7 @@ class WaNavBar extends HTMLElement {
             font-size: var(--link-font-size);
             font-weight: 400;
             text-decoration: none;
+            letter-spacing: 0.6px;
           }
           .wa-navbar-container .nav-links-content .nav-links-link-col > p:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > a:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > button:not(:last-child) {
             margin-bottom: 18px;

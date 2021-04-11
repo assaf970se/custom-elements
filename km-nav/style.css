@@ -28,6 +28,7 @@
   height: 100%;
   color: var(--wa-km-nav-text-color);
   background-color: transparent;
+  letter-spacing: 0.6px;
   border: none;
   outline: none;
   font-size: var(--wa-km-nav-link-font-size);
