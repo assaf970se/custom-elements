@@ -208,6 +208,8 @@ class WaNavBar extends HTMLElement {
             * {
               box-sizing: border-box;
               font-family: "Madefor Display", sans-serif;
+              margin: 0;
+              padding: 0;
             }
             
             .wa-navbar-container {
