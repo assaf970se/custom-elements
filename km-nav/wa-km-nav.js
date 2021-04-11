@@ -30,7 +30,7 @@ class WaKmNav extends HTMLElement {
           <style>
           * {
             box-sizing: border-box;
-            font-family: "Madefor Display", sans-serif;
+            font-family: "Madefor", sans-serif;
             margin: 0;
             padding: 0;
           }
