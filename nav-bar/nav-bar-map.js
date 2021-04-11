@@ -1,10 +1,16 @@
 const NAV_BAR_MAP = {
     LOGO: {
         link: 'https://www.wixanswers.com',
+        type: 'logo',
+        elId: 'nav-logo',
+        text: 'logo',
+        src:
+            'https://static.wixstatic.com/shapes/dba05e_67c23a413b1744d5b7084696c38a9f52.svg',
     },
     NAV_LINKS: {
         WHY_ANSWERS: {
             text: 'Why Answers?',
+            elId: 'nav-links-link-why-answers',
             WHY_WERE_DIFFERENT: {
                 elId: 'wa-wed-link',
                 text: "Why we're different",
@@ -27,6 +33,8 @@ const NAV_BAR_MAP = {
             },
         },
         PLATFORM: {
+            text: 'Platform',
+            elId: 'nav-links-link-platform',
             OVERVIEW: {
                 text: 'OVERVIEW',
                 FULL_CS_SOLUTION: {
@@ -99,54 +107,100 @@ const NAV_BAR_MAP = {
         },
         SOLUTIONS: {
             text: 'Solutions',
-            SMB: {
-                elId: 'sl-smb-link',
-                text: 'SMB',
-                link: 'https://www.wixanswers.com/smb'
+            elId: 'nav-links-link-solutions',
+            COMPANY_TYPE: {
+                text: 'COMPANY TYPE',
+                SMB: {
+                    elId: 'sl-ct-smb-link',
+                    text: 'SMB',
+                    link: 'https://www.wixanswers.com/smb',
+                },
+                ENTERPRISE: {
+                    elId: 'sl-ct-ent-link',
+                    text: 'Enterprise',
+                    link: 'https://www.wixanswers.com/enterprise',
+                },
             },
-            ENTERPRISE: {
-                elId: 'sl-ent-link',
-                text: 'Enterprise',
-                link: 'https://www.wixanswers.com/enterprise'
-            }
+            USE_CASE: {
+                text: 'USE CASE',
+                OMNICHANNEL_SUPPORT: {
+                    elId: 'sl-uc-os-link',
+                    text: 'Omnichannel Support',
+                    link: 'https://www.wixanswers.com/omnichannel-support',
+                },
+                SELF_SERVICE: {
+                    elId: 'sl-uc-ss-link',
+                    text: 'Self-service',
+                    link: 'https://www.wixanswers.com/self-service',
+                },
+                PROACTIVE_SUPPORT: {
+                    elId: 'sl-uc-ps-link',
+                    text: 'Proactive Support',
+                    link: 'https://www.wixanswers.com/proactive-support',
+                },
+                CUSTOMER_INTERACTIONS: {
+                    elId: 'sl-uc-ci-link',
+                    text: 'Customer Interactions',
+                    link: 'https://www.wixanswers.com/customer-interactions',
+                },
+            },
         },
         PRICING: {
             elId: 'nav-links-link-pricing',
             text: 'Pricing',
-            link: 'https://www.wixanswers.com/pricing'
+            link: 'https://www.wixanswers.com/pricing',
         },
         EXPLORE: {
             text: 'Explore',
+            elId: 'nav-links-link-explore',
             TECH_ASSESSMENT: {
                 elId: 'ex-ta-link',
                 text: 'CS Tech Assessment',
-                link: 'https://app.wixanswers.com/assessment?_ga=2.180617447.1349779728.1617533070-748958510.1597566763'
+                link:
+                    'https://app.wixanswers.com/assessment?_ga=2.180617447.1349779728.1617533070-748958510.1597566763',
             },
             CX_LIBRARY: {
                 elId: 'ex-cxlib-link',
                 text: 'CX Library',
-                link: 'https://www.wixanswers.com/cx-library'
+                link: 'https://www.wixanswers.com/cx-library',
             },
             BLOG: {
                 elId: 'ex-blog-link',
                 text: 'Blog',
-                link: 'https://www.wixanswers.com/blog'
+                link: 'https://www.wixanswers.com/blog',
             },
             HELP_CENTER: {
                 elId: 'ex-hc-link',
                 text: 'Help Center',
-                link: 'https://help.wixanswers.com/kb/en'
+                link: 'https://help.wixanswers.com/kb/en',
             },
             VIDEO_TUTORIALS: {
                 elId: 'ex-vid-link',
                 text: 'Video Tutorials',
-                link: 'https://www.wixanswers.com/video-tutorials'
+                link: 'https://www.wixanswers.com/video-tutorials',
             },
             DEVELOPER_TOOLS: {
                 elId: 'ex-dev-link',
                 text: 'Developer Tools',
-                link: 'https://www.wixanswers.com/developers'
-            }
-        }
+                link: 'https://www.wixanswers.com/developers',
+            },
+        },
+    },
+    NAV_CTA: {
+        LOGIN: {
+            elId: 'nav-cta-login',
+            text: 'Login',
+            link: 'https://app.wixanswers.com/login',
+        },
+        TRY_FOR_FREE: {
+            elId: 'nav-cta-try-for-free',
+            text: 'Try for Free',
+            link: 'https://app.wixanswers.com/signup',
+        },
+        REQUEST_DEMO: {
+            elId: 'nav-cta-try-for-request-demo',
+            text: 'Request Demo',
+            link: 'https://info.wixanswers.com/request-demo.html',
+        },
     },
 };

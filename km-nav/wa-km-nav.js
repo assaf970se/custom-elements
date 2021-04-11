@@ -30,15 +30,15 @@ class WaKmNav extends HTMLElement {
           <style>
           * {
             box-sizing: border-box;
-            font-family: "Madefor Display", sans-serif;
+            font-family: "Madefor", "Helvetica Neue", sans-serif;
             margin: 0;
             padding: 0;
           }
           
           .wa-km-nav-container {
-            --wa-km-nav-bg-color: #20303c;
+            --wa-km-nav-bg-color: #002764;
             --wa-km-nav-text-color: #ffffff;
-            --wa-km-nav-link-color: #2288f9;
+            --wa-km-nav-link-color: #3BDECA;
             --wa-km-nav-link-font-size: 15px;
             height: 50px;
             width: 100%;

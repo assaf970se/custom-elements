@@ -9,7 +9,8 @@ class WaNavBar extends HTMLElement {
                 type: 'logo',
                 elId: 'nav-logo',
                 text: 'logo',
-                src:'https://static.wixstatic.com/shapes/dba05e_67c23a413b1744d5b7084696c38a9f52.svg',
+                src:
+                    'https://static.wixstatic.com/shapes/dba05e_67c23a413b1744d5b7084696c38a9f52.svg',
             },
             NAV_LINKS: {
                 WHY_ANSWERS: {
@@ -198,256 +199,271 @@ class WaNavBar extends HTMLElement {
                     },
                 },
             },
+            NAV_CTA: {
+                LOGIN: {
+                    elId: 'nav-cta-login',
+                    text: 'Login',
+                    link: 'https://app.wixanswers.com/login',
+                },
+                TRY_FOR_FREE: {
+                    elId: 'nav-cta-try-for-free',
+                    text: 'Try for Free',
+                    link: 'https://app.wixanswers.com/signup',
+                },
+                REQUEST_DEMO: {
+                    elId: 'nav-cta-try-for-request-demo',
+                    text: 'Request Demo',
+                    link: 'https://info.wixanswers.com/request-demo.html',
+                },
+            },
         };
-
-        this.NAV_LINKS_LIST = [];
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
           <style>
-            * {
-              box-sizing: border-box;
-              font-family: "Madefor Display", sans-serif;
-              margin: 0;
-              padding: 0;
-            }
-            
-            .wa-navbar-container {
-              --main-text-color: #002764;
-              --link-color: #2288f9;
-              --text-white-color: #fff;
-              --nav-section-title-color: #99a9c1;
-              --nav-section-divider-color: #ccd4e0;
-              --link-font-size: 15px;
-              --btn-link-font-size: 13px;
-              --btn-link-width: 160px;
-              --btn-link-height: 42px;
-              box-sizing: border-box;
-              font-family: "Madefor Display", sans-serif;
-              display: flex;
-              justify-content: space-around;
-              align-items: baseline;
-              padding-right: 60px;
-              padding-left: 60px;
-              color: var(--main-text-color);
-            }
-            .wa-navbar-container .nav-logo-container {
-              min-width: 160px;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              margin-right: 60px;
-            }
-            .wa-navbar-container .nav-logo-container img {
-              cursor: pointer;
-              width: 100%;
-            }
-            .wa-navbar-container .nav-links-container {
-              --nav-link-width: 120px;
-              --whyanswers-nav-background-width-px: 240px;
-              --whyanswers-nav-background-height-px: 240px;
-              --platform-nav-background-width-px: 650px;
-              --platform-nav-background-height-px: 370px;
-              --solutions-nav-background-width-px: 480px;
-              --solutions-nav-background-height-px: 280px;
-              --explore-nav-background-width-px: 270px;
-              --explore-nav-background-height-px: 320px;
-              height: 70px;
-              flex-grow: 2;
-              perspective: 2000px;
-            }
-            .wa-navbar-container .nav-links-link-container {
-              position: relative;
-              height: 100%;
-              display: flex;
-              align-items: center;
-            }
-            .wa-navbar-container .nav-links-link-container .nav-links-link {
-              padding: 0;
-              cursor: default;
-              width: var(--nav-link-width);
-              text-decoration: none;
-              font-size: var(--link-font-size);
-              font-weight: 400;
-              height: 100%;
-              line-height: 70px;
-              background: none;
-              border: none;
-              outline: none;
-              color: var(--main-text-color);
-              letter-spacing: 0.4px;
-            }
-            .wa-navbar-container .nav-links-link-container .nav-links-link.bold {
-              font-weight: bold;
-            }
-            .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing {
-              cursor: pointer;
-            }
-            .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing:hover {
-              color: var(--link-color);
-            }
-            .wa-navbar-container .nav-links-content {
-              position: absolute;
-              background: #fff;
-              visibility: hidden;
-              opacity: 0;
-              top: 60px;
-              border-radius: 6px;
-              display: flex;
-              letter-spacing: 0.4px;
-              justify-content: space-evenly;
-              z-index: 100;
-              padding-top: 50px;
-              transform-origin: center -100px;
-              transform: rotateX(-10deg);
-              box-shadow: 0 30px 60px -50px #e9e7e7;
-              transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
-            }
-            .wa-navbar-container .nav-links-content#why-answers {
-              width: var(--whyanswers-nav-background-width-px);
-              height: var(--whyanswers-nav-background-height-px);
-              left: 0;
-            }
-            .wa-navbar-container .nav-links-content#platform {
-              left: 125px;
-              width: var(--platform-nav-background-width-px);
-              height: var(--platform-nav-background-height-px);
-              z-index: 150;
-            }
-            .wa-navbar-container .nav-links-content#solutions {
-              left: 250px;
-              width: var(--solutions-nav-background-width-px);
-              height: var(--solutions-nav-background-height-px);
-              z-index: 150;
-            }
-            .wa-navbar-container .nav-links-content#explore {
-              left: 500px;
-              display: flex;
-              height: var(--explore-nav-background-height-px);
-              width: var(--whyanswers-nav-background-width-px);
-              z-index: 150;
-            }
-            .wa-navbar-container .nav-links-content#pricing {
-              left: 350px;
-            }
-            .wa-navbar-container .nav-links-content.why-answers {
-              opacity: 1;
-              z-index: 150;
-              visibility: visible;
-              transform: rotateX(0);
-            }
-            .wa-navbar-container .nav-links-content.platform {
-              opacity: 1;
-              visibility: visible;
-              transform: rotateX(0);
-            }
-            .wa-navbar-container .nav-links-content.platform .nav-link-divider {
-              width: 2px;
-              height: 240px;
-              border: solid 1px #ccd4e0;
-              align-self: flex-start;
-            }
-            .wa-navbar-container .nav-links-content.solutions {
-              opacity: 1;
-              visibility: visible;
-              transform: rotateX(0);
-            }
-            .wa-navbar-container .nav-links-content.explore {
-              opacity: 1;
-              visibility: visible;
-              transform: rotateX(0);
-            }
-            .wa-navbar-container .nav-links-content .nav-links-link-col {
-              display: flex;
-              flex-direction: column;
-              justify-content: flex-start;
-            }
-            .wa-navbar-container .nav-links-content .nav-links-link-col h4 {
-              margin-top: 0;
-              color: var(--nav-section-title-color);
-              margin-bottom: 25px;
-              font-size: 14px;
-              font-weight: 700;
-              text-transform: uppercase;
-            }
-            .wa-navbar-container .nav-links-content .nav-links-link-col > p, .wa-navbar-container .nav-links-content .nav-links-link-col > a, .wa-navbar-container .nav-links-content .nav-links-link-col > button {
-              cursor: pointer;
-              color: inherit;
-              background: none;
-              outline: none;
-              border: none;
-              text-align: left;
-              font-size: var(--link-font-size);
-              font-weight: 400;
-              text-decoration: none;
-            }
-            .wa-navbar-container .nav-links-content .nav-links-link-col > p:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > a:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > button:not(:last-child) {
-              margin-bottom: 18px;
-            }
-            .wa-navbar-container .nav-links-content .nav-links-link-col > p:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > a:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > button:hover {
-              color: var(--link-color);
-            }
-            .wa-navbar-container .nav-cta-container {
-              height: 100%;
-              display: flex;
-              align-items: center;
-            }
-            .wa-navbar-container .nav-cta-container .nav-cta-type-1 {
-              cursor: pointer;
-              color: var(--main-text-color);
-              font-size: var(--link-font-size);
-              text-decoration: none;
-              font-weight: 400;
-              width: 75px;
-              background: none;
-              border: none;
-              outline: none;
-              margin-right: 20px;
-            }
-            .wa-navbar-container .nav-cta-container .nav-cta-type-1:hover {
-              color: var(--link-color);
-            }
-            .wa-navbar-container .nav-cta-container .nav-cta-type-2 {
-              cursor: pointer;
-              font-size: var(--btn-link-font-size);
-              text-decoration: none;
-              font-weight: 400;
-              height: var(--btn-link-height);
-              width: var(--btn-link-width);
-              background: var(--link-color);
-              color: var(--text-white-color);
-              border-radius: 20px;
-              border: none;
-              outline: none;
-              margin-right: 20px;
-              letter-spacing: 0.8px;
-              opacity: 1;
-              text-transform: uppercase;
-              transition: opacity 0.5s;
-            }
-            .wa-navbar-container .nav-cta-container .nav-cta-type-2:hover {
-              opacity: 0.8;
-            }
-            .wa-navbar-container .nav-cta-container .nav-cta-type-3 {
-              font-size: var(--btn-link-font-size);
-              cursor: pointer;
-              text-decoration: none;
-              font-weight: 400;
-              text-transform: uppercase;
-              height: var(--btn-link-height);
-              width: var(--btn-link-width);
-              color: var(--link-color);
-              background: var(--text-white-color);
-              border: 1px solid var(--link-color);
-              border-radius: 20px;
-              letter-spacing: 0.8px;
-              outline: none;
-              transition: color 0.5s, background 0.5s, border 0.5s;
-            }
-            .wa-navbar-container .nav-cta-container .nav-cta-type-3:hover {
-              opacity: 0.8;
-            }
-            </style>
+          * {
+            box-sizing: border-box;
+            font-family: "Madefor Display", sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+          
+          .wa-navbar-container {
+            --main-text-color: #002764;
+            --link-color: #2288f9;
+            --text-white-color: #fff;
+            --nav-section-title-color: #99a9c1;
+            --nav-section-divider-color: #ccd4e0;
+            --link-font-size: 15px;
+            --btn-link-font-size: 13px;
+            --btn-link-width: 160px;
+            --btn-link-height: 42px;
+            box-sizing: border-box;
+            font-family: "Madefor Display", sans-serif;
+            display: flex;
+            justify-content: space-around;
+            align-items: baseline;
+            padding-right: 60px;
+            padding-left: 60px;
+            color: var(--main-text-color);
+          }
+          .wa-navbar-container .nav-logo-container {
+            min-width: 160px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            margin-right: 60px;
+          }
+          .wa-navbar-container .nav-logo-container img {
+            cursor: pointer;
+            width: 100%;
+          }
+          .wa-navbar-container .nav-links-container {
+            --nav-link-width: 120px;
+            --whyanswers-nav-background-width-px: 240px;
+            --whyanswers-nav-background-height-px: 240px;
+            --platform-nav-background-width-px: 650px;
+            --platform-nav-background-height-px: 370px;
+            --solutions-nav-background-width-px: 480px;
+            --solutions-nav-background-height-px: 280px;
+            --explore-nav-background-width-px: 270px;
+            --explore-nav-background-height-px: 320px;
+            height: 70px;
+            flex-grow: 2;
+            perspective: 2000px;
+          }
+          .wa-navbar-container .nav-links-link-container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+          }
+          .wa-navbar-container .nav-links-link-container .nav-links-link {
+            padding: 0;
+            cursor: default;
+            width: var(--nav-link-width);
+            text-decoration: none;
+            font-size: var(--link-font-size);
+            font-weight: 400;
+            height: 100%;
+            line-height: 70px;
+            background: none;
+            border: none;
+            outline: none;
+            color: var(--main-text-color);
+            letter-spacing: 0.4px;
+          }
+          .wa-navbar-container .nav-links-link-container .nav-links-link.bold {
+            font-weight: bold;
+          }
+          .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing {
+            cursor: pointer;
+          }
+          .wa-navbar-container .nav-links-link-container .nav-links-link.nav-links-link-pricing:hover {
+            color: var(--link-color);
+          }
+          .wa-navbar-container .nav-links-content {
+            position: absolute;
+            background: #fff;
+            visibility: hidden;
+            opacity: 0;
+            top: 60px;
+            border-radius: 6px;
+            display: flex;
+            letter-spacing: 0.4px;
+            justify-content: space-evenly;
+            z-index: 100;
+            padding-top: 50px;
+            transform-origin: center -100px;
+            transform: rotateX(-10deg);
+            box-shadow: 0 30px 60px -50px #e9e7e7, 30px 0 60px -50px #e9e7e7, -30px 0 60px -50px #e9e7e7;
+            transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
+          }
+          .wa-navbar-container .nav-links-content#why-answers {
+            width: var(--whyanswers-nav-background-width-px);
+            height: var(--whyanswers-nav-background-height-px);
+            left: 0;
+          }
+          .wa-navbar-container .nav-links-content#platform {
+            left: 125px;
+            width: var(--platform-nav-background-width-px);
+            height: var(--platform-nav-background-height-px);
+            z-index: 150;
+          }
+          .wa-navbar-container .nav-links-content#solutions {
+            left: 250px;
+            width: var(--solutions-nav-background-width-px);
+            height: var(--solutions-nav-background-height-px);
+            z-index: 150;
+          }
+          .wa-navbar-container .nav-links-content#explore {
+            left: 500px;
+            display: flex;
+            height: var(--explore-nav-background-height-px);
+            width: var(--whyanswers-nav-background-width-px);
+            z-index: 150;
+          }
+          .wa-navbar-container .nav-links-content#pricing {
+            left: 350px;
+          }
+          .wa-navbar-container .nav-links-content.why-answers {
+            opacity: 1;
+            z-index: 150;
+            visibility: visible;
+            transform: rotateX(0);
+          }
+          .wa-navbar-container .nav-links-content.platform {
+            opacity: 1;
+            visibility: visible;
+            transform: rotateX(0);
+          }
+          .wa-navbar-container .nav-links-content.platform .nav-link-divider {
+            width: 2px;
+            height: 250px;
+            border: solid 1px #ccd4e0;
+            align-self: flex-start;
+          }
+          .wa-navbar-container .nav-links-content.solutions {
+            opacity: 1;
+            visibility: visible;
+            transform: rotateX(0);
+          }
+          .wa-navbar-container .nav-links-content.explore {
+            opacity: 1;
+            visibility: visible;
+            transform: rotateX(0);
+          }
+          .wa-navbar-container .nav-links-content .nav-links-link-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+          }
+          .wa-navbar-container .nav-links-content .nav-links-link-col h4 {
+            margin-top: 0;
+            color: var(--nav-section-title-color);
+            margin-bottom: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+          .wa-navbar-container .nav-links-content .nav-links-link-col > p, .wa-navbar-container .nav-links-content .nav-links-link-col > a, .wa-navbar-container .nav-links-content .nav-links-link-col > button {
+            cursor: pointer;
+            color: inherit;
+            background: none;
+            outline: none;
+            border: none;
+            text-align: left;
+            font-size: var(--link-font-size);
+            font-weight: 400;
+            text-decoration: none;
+          }
+          .wa-navbar-container .nav-links-content .nav-links-link-col > p:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > a:not(:last-child), .wa-navbar-container .nav-links-content .nav-links-link-col > button:not(:last-child) {
+            margin-bottom: 18px;
+          }
+          .wa-navbar-container .nav-links-content .nav-links-link-col > p:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > a:hover, .wa-navbar-container .nav-links-content .nav-links-link-col > button:hover {
+            color: var(--link-color);
+          }
+          .wa-navbar-container .nav-cta-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+          }
+          .wa-navbar-container .nav-cta-container .nav-cta-type-1 {
+            cursor: pointer;
+            color: var(--main-text-color);
+            font-size: var(--link-font-size);
+            text-decoration: none;
+            font-weight: 400;
+            width: 75px;
+            background: none;
+            border: none;
+            outline: none;
+            margin-right: 20px;
+          }
+          .wa-navbar-container .nav-cta-container .nav-cta-type-1:hover {
+            color: var(--link-color);
+          }
+          .wa-navbar-container .nav-cta-container .nav-cta-type-2 {
+            cursor: pointer;
+            font-size: var(--btn-link-font-size);
+            text-decoration: none;
+            font-weight: 400;
+            height: var(--btn-link-height);
+            width: var(--btn-link-width);
+            background: var(--link-color);
+            color: var(--text-white-color);
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            margin-right: 20px;
+            letter-spacing: 0.8px;
+            opacity: 1;
+            text-transform: uppercase;
+            transition: opacity 0.5s;
+          }
+          .wa-navbar-container .nav-cta-container .nav-cta-type-2:hover {
+            opacity: 0.8;
+          }
+          .wa-navbar-container .nav-cta-container .nav-cta-type-3 {
+            font-size: var(--btn-link-font-size);
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 400;
+            text-transform: uppercase;
+            height: var(--btn-link-height);
+            width: var(--btn-link-width);
+            color: var(--link-color);
+            background: var(--text-white-color);
+            border: 1px solid var(--link-color);
+            border-radius: 20px;
+            letter-spacing: 0.8px;
+            outline: none;
+            transition: color 0.5s, background 0.5s, border 0.5s;
+          }
+          .wa-navbar-container .nav-cta-container .nav-cta-type-3:hover {
+            opacity: 0.8;
+          }
+          </style>
 
           <div class="wa-navbar-container">
             <div class="nav-logo-container">
@@ -609,9 +625,9 @@ class WaNavBar extends HTMLElement {
                 </div>
             </div>
             <div class="nav-cta-container">
-                <button class="nav-cta-type-1">Login</button>
-                <button class="nav-cta-type-2">Try for Free</button>
-                <button class="nav-cta-type-3">Request Demo</button>
+                <button class="nav-cta-type-1" id="${this.NAV_BAR_MAP.NAV_CTA.LOGIN.elId}">${this.NAV_BAR_MAP.NAV_CTA.LOGIN.text}</button>
+                <button class="nav-cta-type-2" id="${this.NAV_BAR_MAP.NAV_CTA.TRY_FOR_FREE.elId}">${this.NAV_BAR_MAP.NAV_CTA.TRY_FOR_FREE.text}</button>
+                <button class="nav-cta-type-3" id="${this.NAV_BAR_MAP.NAV_CTA.REQUEST_DEMO.elId}">${this.NAV_BAR_MAP.NAV_CTA.REQUEST_DEMO.text}</button>
             </div>
         </div>
       `;
@@ -642,28 +658,66 @@ class WaNavBar extends HTMLElement {
             .addEventListener('mouseover', () => this.setActiveLink('explore'));
 
         this.addLinkEvent(this.NAV_BAR_MAP.LOGO);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER);
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER
+        );
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.WIDGETS);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS);
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS
+        );
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.SPOTTER);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES);
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES
+        );
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PLATFORM.BOOSTERS.CSAT);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT);
-        this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS);
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT
+        );
+        this.addLinkEvent(
+            this.NAV_BAR_MAP.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS
+        );
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.PRICING);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.TECH_ASSESSMENT);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.CX_LIBRARY);
@@ -671,6 +725,9 @@ class WaNavBar extends HTMLElement {
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.HELP_CENTER);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.VIDEO_TUTORIALS);
         this.addLinkEvent(this.NAV_BAR_MAP.NAV_LINKS.EXPLORE.DEVELOPER_TOOLS);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_CTA.LOGIN);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_CTA.TRY_FOR_FREE);
+        this.addLinkEvent(this.NAV_BAR_MAP.NAV_CTA.REQUEST_DEMO);
     }
 
     connectedCallback() {
@@ -693,7 +750,10 @@ class WaNavBar extends HTMLElement {
     }
 
     setCurrentPageLinkFolder(linkFolder) {
-        if (this._currentPageLinkFolder && this._currentPageLinkFolder !== 'home') {
+        if (
+            this._currentPageLinkFolder &&
+            this._currentPageLinkFolder !== 'home'
+        ) {
             this.shadowRoot
                 .getElementById(`nav-links-link-${this._currentPageLinkFolder}`)
                 .classList.remove('bold');
