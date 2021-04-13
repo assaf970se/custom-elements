@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://static.parastorage.com/unpkg/@wix/wix-fonts@1.9.3/madefor.css">
+    <title>WA MKTO FORM</title>
+    <script src="wa-mkto-form.js"></script>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <script src="//app-nld101.marketo.com/js/forms2/js/forms2.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Madefor', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <wa-mkto-form mktoformid="1401"></wa-mkto-form>
+    <!-- <div class="wa-mkto-form-wrapper">
+        <div class="wa-mkto-form-container">
+            <div class="wa-mkto-form-title">
+                Schedule a 15 minute demo
+            </div>
+            <form id="mktoForm_1401"></form>
+
+        </div>
+    </div> -->
+
+    <!-- <script>MktoForms2.loadForm("//app-nld101.marketo.com", "314-AVR-999", 1401);</script> -->
+    <script>
+        document.querySelector('wa-mkto-form').addEventListener('message', (e) => console.log('e: ', e));
+    </script>
+</body>
+
+</html>
