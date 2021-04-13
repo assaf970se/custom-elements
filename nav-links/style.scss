@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Madefor', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links-container {
+    --main-text-color: #002764;
+    --link-color: #2288f9;
+    --text-white-color: #fff;
+    --nav-section-title-color: #99a9c1;
+    --nav-section-divider-color: #ccd4e0;
+    --link-font-size: 15px;
+    --btn-link-font-size: 13px;
+    --btn-link-width: 160px;
+    --btn-link-height: 42px;
+    --nav-link-width: 120px;
+    --whyanswers-nav-background-width-px: 240px;
+    --whyanswers-nav-background-height-px: 240px;
+    --platform-nav-background-width-px: 650px;
+    --platform-nav-background-height-px: 370px;
+    --solutions-nav-background-width-px: 480px;
+    --solutions-nav-background-height-px: 280px;
+    --explore-nav-background-width-px: 270px;
+    --explore-nav-background-height-px: 320px;
+    color: var(--main-text-color);
+    padding-left: 30px;
+    perspective: 2000px;
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 650px) {
+        display: none;
+    }
+}
+
+.nav-links-link-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .nav-links-link {
+        padding: 0;
+        cursor: default;
+        width: var(--nav-link-width);
+        text-decoration: none;
+        font-size: var(--link-font-size);
+        font-weight: 400;
+        height: 100%;
+        line-height: 70px;
+        background: none;
+        border: none;
+        outline: none;
+        color: var(--main-text-color);
+        letter-spacing: 0.6px;
+
+        &.bold {
+            font-weight: bold;
+        }
+
+        &.nav-links-link-pricing {
+            cursor: pointer;
+
+            &:hover {
+                color: var(--link-color);
+            }
+        }
+    }
+}
+
+.nav-links-content {
+    position: absolute;
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    top: 60px;
+    border-radius: 6px;
+    display: flex;
+    letter-spacing: 0.4px;
+    justify-content: space-evenly;
+    z-index: 100;
+    padding-top: 50px;
+    transform-origin: center -100px;
+    transform: rotateX(-10deg);
+    box-shadow: 0 30px 60px -50px #e9e7e7, 30px 0 60px -50px #e9e7e7,
+        -30px 0 60px -50px #e9e7e7;
+    transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
+
+    &#why-answers {
+        width: var(--whyanswers-nav-background-width-px);
+        height: var(--whyanswers-nav-background-height-px);
+        left: 0;
+    }
+
+    &#platform {
+        left: 125px;
+        width: var(--platform-nav-background-width-px);
+        height: var(--platform-nav-background-height-px);
+        z-index: 150;
+    }
+    &#solutions {
+        left: 250px;
+        width: var(--solutions-nav-background-width-px);
+        height: var(--solutions-nav-background-height-px);
+        z-index: 150;
+    }
+    &#explore {
+        left: 500px;
+        display: flex;
+        height: var(--explore-nav-background-height-px);
+        width: var(--whyanswers-nav-background-width-px);
+        z-index: 150;
+    }
+    &#pricing {
+        left: 350px;
+    }
+
+    &.why-answers {
+        opacity: 1;
+        z-index: 150;
+        visibility: visible;
+        transform: rotateX(0);
+    }
+    &.platform {
+        opacity: 1;
+        visibility: visible;
+        transform: rotateX(0);
+
+        .nav-link-divider {
+            width: 2px;
+            height: 250px;
+            border: solid 1px #ccd4e0;
+            align-self: flex-start;
+        }
+    }
+    &.solutions {
+        opacity: 1;
+        visibility: visible;
+        transform: rotateX(0);
+    }
+    &.explore {
+        opacity: 1;
+        visibility: visible;
+        transform: rotateX(0);
+    }
+
+    .nav-links-link-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        h4 {
+            margin-top: 0;
+            color: var(--nav-section-title-color);
+            margin-bottom: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        & > p,
+        & > a,
+        & > button {
+            cursor: pointer;
+            color: inherit;
+            background: none;
+            outline: none;
+            border: none;
+            text-align: left;
+            font-size: var(--link-font-size);
+            font-weight: 400;
+            text-decoration: none;
+            letter-spacing: 0.6px;
+
+            &:not(:last-child) {
+                margin-bottom: 18px;
+            }
+
+            &:hover {
+                color: var(--link-color);
+            }
+        }
+    }
+}
+.nav-cta-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    & .nav-cta-type-1 {
+        cursor: pointer;
+        color: var(--main-text-color);
+        font-size: var(--link-font-size);
+        text-decoration: none;
+        font-weight: 400;
+        width: 75px;
+        background: none;
+        border: none;
+        outline: none;
+        margin-right: 20px;
+
+        &:hover {
+            color: var(--link-color);
+        }
+    }
+    & .nav-cta-type-2 {
+        cursor: pointer;
+        font-size: var(--btn-link-font-size);
+        text-decoration: none;
+        font-weight: 400;
+        height: var(--btn-link-height);
+        width: var(--btn-link-width);
+        background: var(--link-color);
+        color: var(--text-white-color);
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        margin-right: 20px;
+        letter-spacing: 0.8px;
+        opacity: 1;
+        text-transform: uppercase;
+        transition: opacity 0.5s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    & .nav-cta-type-3 {
+        font-size: var(--btn-link-font-size);
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 400;
+        text-transform: uppercase;
+        height: var(--btn-link-height);
+        width: var(--btn-link-width);
+        color: var(--link-color);
+        background: var(--text-white-color);
+        border: 1px solid var(--link-color);
+        border-radius: 20px;
+        letter-spacing: 0.8px;
+        outline: none;
+        transition: color 0.5s, background 0.5s, border 0.5s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

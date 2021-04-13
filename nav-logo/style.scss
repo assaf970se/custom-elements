@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Madefor', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-logo-container {
+    width: 160px;
+    height: 70px;
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        cursor: pointer;
+        width: 100%;
+    }
+}

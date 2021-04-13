@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://static.parastorage.com/unpkg/@wix/wix-fonts@1.9.3/madefor.css">
+    <title>web components - advanced</title>
+    <script src="wa-nav-links.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Madefor', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div class="nav-links-container">
+        <div class="nav-links-link-container" id="nav-links-link-container" onmouseleave="setActiveLink('')">
+            <button class="nav-links-link" onmouseover="setActiveLink('why-answers')">
+                Why Answers?
+            </button>
+            <button class="nav-links-link" onmouseover="setActiveLink('platform')">
+                Platform
+            </button>
+            <button class="nav-links-link" onmouseover="setActiveLink('solutions')">
+                Solutions
+            </button>
+            <button class="nav-links-link nav-links-link-pricing" onmouseover="setActiveLink('pricing')">
+                Pricing
+            </button>
+            <button class="nav-links-link" onmouseover="setActiveLink('explore')">
+                Explore
+            </button>
+            <div class="nav-links-content" id="why-answers">
+                <div class="nav-links-link-col">
+                    <button>Why we're different</button>
+                    <button>Results with Answers</button>
+                    <button>Customer stories</button>
+                    <button>CS solutions for 2021</button>
+                </div>
+            </div>
+            <div class="nav-links-content" id="platform">
+                <div class="nav-links-link-col">
+                    <h4>Overview</h4>
+                    <button>Full CS solution</button>
+                    <button>Integrations</button>
+                </div>
+                <div class="nav-links-link-col">
+                    <h4>Products</h4>
+                    <button>Knowledge management</button>
+                    <button>Tickting system</button>
+                    <button>Call center</button>
+                    <button>Widgets</button>
+                    <button>Live chat</button>
+                    <button>Insights</button>
+                </div>
+                <div class="nav-link-divider"></div>
+                <div class="nav-links-link-col">
+                    <h4>Boosters</h4>
+                    <button>Spotter</button>
+                    <button>Control room</button>
+                    <button>Top Issues</button>
+                    <button>Built-in CSAT</button>
+                </div>
+            </div>
+            <div class="nav-links-content" id="solutions">
+                <div class="nav-links-link-col">
+                    <button>SMB</button>
+                    <button>Enterprise</button>
+                </div>
+            </div>
+            <div class="nav-links-content" id="pricing"></div>
+            <div class="nav-links-content" id="explore">
+                <div class="nav-links-link-col">
+                    <button>CS Tech Assessment</button>
+                    <button>CX Library</button>
+                    <button>Blog</button>
+                    <button>Help Center</button>
+                    <button>Video Tutorials</button>
+                    <button>Developer Tools</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <wa-nav-links currentpagelinkfolder="home"></wa-nav-links>
+    <!-- <script>
+        activeLink = '';
+
+        function setActiveLink(linkStr) {
+            if (activeLink) {
+                document.getElementById(activeLink).classList.remove(activeLink);
+            }
+
+            if (linkStr) {
+                document.getElementById(linkStr).classList.add(linkStr);
+            }
+
+            activeLink = linkStr;
+        }
+    </script> -->
+</body>
+
+</html>

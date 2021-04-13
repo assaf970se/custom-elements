@@ -35,21 +35,27 @@ class WaKmNav extends HTMLElement {
             padding: 0;
           }
           
-          .wa-km-nav-container {
+          .wa-km-nav-wrapper {
             --wa-km-nav-bg-color: #002764;
             --wa-km-nav-text-color: #ffffff;
             --wa-km-nav-link-color: #3BDECA;
             --wa-km-nav-link-font-size: 15px;
-            height: 50px;
-            width: 100%;
-            padding-left: 290px;
             display: flex;
             align-items: center;
             background-color: var(--wa-km-nav-bg-color);
           }
-          @media screen and (max-width: 1380px) {
+          
+          .wa-km-nav-container {
+            height: 50px;
+            width: 100%;
+            padding-left: 30px;
+            display: flex;
+            align-items: center;
+          }
+          @media screen and (max-width: 650px) {
             .wa-km-nav-container {
-              padding-left: 20%;
+              padding-left: 5px;
+              padding-right: 5px;
             }
           }
           
@@ -70,15 +76,22 @@ class WaKmNav extends HTMLElement {
           .wa-km-nav-link:not(:last-child) {
             margin-right: 40px;
           }
+          @media screen and (max-width: 650px) {
+            .wa-km-nav-link:not(:last-child) {
+              margin-right: 20px;
+            }
+          }
           .wa-km-nav-link.active {
             color: var(--wa-km-nav-link-color);
           }
           </style>
 
-            <div class="wa-km-nav-container">
-                <button class="wa-km-nav-link" id="wa-km-nav-link-overview">Overview</button>
-                <button class="wa-km-nav-link" id="wa-km-nav-link-use-cases">Use cases</button>
-                <button class="wa-km-nav-link" id="wa-km-nav-link-features">Features</button>
+            <div class="wa-km-nav-wrapper">
+                <div class="wa-km-nav-container">
+                    <button class="wa-km-nav-link" id="wa-km-nav-link-overview">Overview</button>
+                    <button class="wa-km-nav-link" id="wa-km-nav-link-use-cases">Use cases</button>
+                    <button class="wa-km-nav-link" id="wa-km-nav-link-features">Features</button>
+                </div>
             </div>
       `;
 
@@ -138,7 +151,7 @@ class WaKmNav extends HTMLElement {
         const res = await fetch(route);
         const resText = await res.text();
         console.log(resText);
-        // if (navLinkObj.link) window.location.href = navLinkObj.link;
+        if (navLinkObj.link) window.location.href = navLinkObj.link;
     }
 }
 
