@@ -19,6 +19,12 @@
   align-items: center;
   justify-content: space-around;
 }
+@media screen and (max-width: 600px) {
+  .wa-mkto-form-container {
+    width: 100%;
+    height: 100%;
+  }
+}
 
 .wa-mkto-form-title {
   font-size: 20px;

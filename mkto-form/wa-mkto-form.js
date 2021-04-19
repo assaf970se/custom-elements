@@ -1,34 +1,41 @@
 const createMktoStyle = () => {
     const style = document.createElement('style');
     style.innerHTML = `
-* {
-  box-sizing: border-box;
-  font-family: "Madefor", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.wa-mkto-form-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wa-mkto-form-container {
-  width: 400px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.wa-mkto-form-title {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 30px;
-}
+    * {
+    box-sizing: border-box;
+    font-family: "Madefor", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .wa-mkto-form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .wa-mkto-form-container {
+    width: 400px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  @media screen and (max-width: 600px) {
+    .wa-mkto-form-container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  .wa-mkto-form-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+  }
+  
 `;
     return style;
 };
