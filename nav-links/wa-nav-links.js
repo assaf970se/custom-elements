@@ -55,7 +55,7 @@ class WaNavLinks extends HTMLElement {
                     },
                     TICKETING_STSTEM: {
                         elId: 'pl-pr-ts-link',
-                        text: 'Tickting system',
+                        text: 'Ticketing system',
                         link: 'https://www.wixanswers.com/ticketing-system',
                     },
                     CALL_CENTER: {
@@ -184,11 +184,11 @@ class WaNavLinks extends HTMLElement {
                     link: 'https://www.wixanswers.com/developers',
                 },
             },
-        }
-        
+        };
+
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
-          <style>
+        <style>
           * {
             box-sizing: border-box;
             font-family: "Madefor", sans-serif;
@@ -208,13 +208,13 @@ class WaNavLinks extends HTMLElement {
             --btn-link-height: 42px;
             --nav-link-width: 120px;
             --whyanswers-nav-background-width-px: 240px;
-            --whyanswers-nav-background-height-px: 240px;
+            --whyanswers-nav-background-height-px: 230px;
             --platform-nav-background-width-px: 650px;
-            --platform-nav-background-height-px: 370px;
-            --solutions-nav-background-width-px: 480px;
-            --solutions-nav-background-height-px: 280px;
+            --platform-nav-background-height-px: 350px;
+            --solutions-nav-background-width-px: 380px;
+            --solutions-nav-background-height-px: 270px;
             --explore-nav-background-width-px: 270px;
-            --explore-nav-background-height-px: 320px;
+            --explore-nav-background-height-px: 300px;
             color: var(--main-text-color);
             padding-left: 30px;
             perspective: 2000px;
@@ -236,7 +236,7 @@ class WaNavLinks extends HTMLElement {
           .nav-links-link-container .nav-links-link {
             padding: 0;
             cursor: default;
-            width: var(--nav-link-width);
+            width: fit-content;
             text-decoration: none;
             font-size: var(--link-font-size);
             font-weight: 400;
@@ -247,6 +247,7 @@ class WaNavLinks extends HTMLElement {
             outline: none;
             color: var(--main-text-color);
             letter-spacing: 0.6px;
+            margin-right: 60px;
           }
           .nav-links-link-container .nav-links-link.bold {
             font-weight: bold;
@@ -272,28 +273,28 @@ class WaNavLinks extends HTMLElement {
             padding-top: 50px;
             transform-origin: center -100px;
             transform: rotateX(-10deg);
-            box-shadow: 0 30px 60px -50px #e9e7e7, 30px 0 60px -50px #e9e7e7, -30px 0 60px -50px #e9e7e7;
+            box-shadow: 0 6px 10px -10px rgba(0, 0, 0, 0.2), 6px 0 10px -10px rgba(0, 0, 0, 0.2), -6px 0 10px -10px rgba(0, 0, 0, 0.2);
             transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
           }
           .nav-links-content#why-answers {
             width: var(--whyanswers-nav-background-width-px);
             height: var(--whyanswers-nav-background-height-px);
-            left: 0;
+            left: -40px;
           }
           .nav-links-content#platform {
-            left: 125px;
+            left: 135px;
             width: var(--platform-nav-background-width-px);
             height: var(--platform-nav-background-height-px);
             z-index: 150;
           }
           .nav-links-content#solutions {
-            left: 250px;
+            left: 262px;
             width: var(--solutions-nav-background-width-px);
             height: var(--solutions-nav-background-height-px);
             z-index: 150;
           }
           .nav-links-content#explore {
-            left: 500px;
+            left: 497px;
             display: flex;
             height: var(--explore-nav-background-height-px);
             width: var(--whyanswers-nav-background-width-px);
@@ -314,9 +315,9 @@ class WaNavLinks extends HTMLElement {
             transform: rotateX(0);
           }
           .nav-links-content.platform .nav-link-divider {
-            width: 2px;
+            width: 1px;
             height: 250px;
-            border: solid 1px #ccd4e0;
+            border: solid 1px rgba(204, 212, 224, 0.5);
             align-self: flex-start;
           }
           .nav-links-content.solutions {
@@ -421,168 +422,165 @@ class WaNavLinks extends HTMLElement {
           .nav-cta-container .nav-cta-type-3:hover {
             opacity: 0.8;
           }
-          </style>
-
-          
-            
-            <div class="nav-links-container">
-                  <div class="nav-links-link-container" id="nav-links-link-container">
-                  <button class="nav-links-link" id="nav-links-link-why-answers">
-                    ${this.NAV_LINKS.WHY_ANSWERS.text}
-                  </button>
-                  <button class="nav-links-link" id="nav-links-link-platform">
-                  ${this.NAV_LINKS.PLATFORM.text}
-                  </button>
-                  <button class="nav-links-link" id="nav-links-link-solutions">
-                  ${this.NAV_LINKS.SOLUTIONS.text}
-                  </button>
-                  <button
-                    class="nav-links-link nav-links-link-pricing"
-                    id="nav-links-link-pricing">
-                    ${this.NAV_LINKS.PRICING.text}
-                  </button>
-                  <button class="nav-links-link" id="nav-links-link-explore">
-                  ${this.NAV_LINKS.EXPLORE.text}
-                  </button>
-                  <div
-                    class="nav-links-content"
-                    id="why-answers"
-                  >
-                    <div class="nav-links-link-col">
-                      <button id=${this.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT.elId}>
-                      ${this.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS.elId}>
-                      ${this.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES.elId}>
-                      ${this.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021.elId}>
-                      ${this.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021.text}
-                      </button>
-                    </div>
+        </style>
+          <div class="nav-links-container">
+                <div class="nav-links-link-container" id="nav-links-link-container">
+                <button class="nav-links-link" id="nav-links-link-why-answers">
+                  ${this.NAV_LINKS.WHY_ANSWERS.text}
+                </button>
+                <button class="nav-links-link" id="nav-links-link-platform">
+                ${this.NAV_LINKS.PLATFORM.text}
+                </button>
+                <button class="nav-links-link" id="nav-links-link-solutions">
+                ${this.NAV_LINKS.SOLUTIONS.text}
+                </button>
+                <button
+                  class="nav-links-link nav-links-link-pricing"
+                  id="nav-links-link-pricing">
+                  ${this.NAV_LINKS.PRICING.text}
+                </button>
+                <button class="nav-links-link" id="nav-links-link-explore">
+                ${this.NAV_LINKS.EXPLORE.text}
+                </button>
+                <div
+                  class="nav-links-content"
+                  id="why-answers"
+                >
+                  <div class="nav-links-link-col">
+                    <button id=${this.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT.elId}>
+                    ${this.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS.elId}>
+                    ${this.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES.elId}>
+                    ${this.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021.elId}>
+                    ${this.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021.text}
+                    </button>
                   </div>
-                  <div
-                    class="nav-links-content"
-                    id="platform"
-                  >
-                    <div class="nav-links-link-col">
-                      <h4>${this.NAV_LINKS.PLATFORM.OVERVIEW.text}</h4>
-                      <button id=${this.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION.elId}>
-                      ${this.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS.elId}>
-                      ${this.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS.text}
-                      </button>
-                    </div>
-                    <div class="nav-links-link-col">
-                      <h4>
-                      ${this.NAV_LINKS.PLATFORM.PRODUCTS.text}
-                      </h4>
-                      <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT.elId}>
-                      ${this.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM.elId}>
-                      ${this.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER.elId}>
-                      ${this.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.WIDGETS.elId}>
-                      ${this.NAV_LINKS.PLATFORM.PRODUCTS.WIDGETS.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT.elId}>
-                      ${this.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS.elId}>
-                      ${this.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS.text}
-                      </button>
-                    </div>
-                    <div class="nav-link-divider"></div>
-                    <div class="nav-links-link-col">
-                      <h4>${this.NAV_LINKS.PLATFORM.BOOSTERS.text}</h4>
-                      <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.SPOTTER.elId}>
-                      ${this.NAV_LINKS.PLATFORM.BOOSTERS.SPOTTER.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM.elId}>
-                      ${this.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES.elId}>
-                      ${this.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.CSAT.elId}>
-                      ${this.NAV_LINKS.PLATFORM.BOOSTERS.CSAT.text}
-                      </button>
-                    </div>
-                  </div>
-                  <div
-                    class="nav-links-content"
-                    id="solutions"
-                  >
-                    <div class="nav-links-link-col">
-                      <h4>${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.text}</h4>
-                      <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.elId}>
-                      ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.elId}>
-                      ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.text}
-                      </button>
-                    </div>
-                    <div class="nav-links-link-col">
-                      <h4>${this.NAV_LINKS.SOLUTIONS.USE_CASE.text}</h4>
-                      <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT.elId}>
-                      ${this.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE.elId}>
-                      ${this.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT.elId}>
-                      ${this.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS.elId}>
-                      ${this.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS.text}
-                      </button>
-                    </div>
-                  </div>
-                  <div class="nav-links-content" id="pricing"></div>
-                  <div
-                    class="nav-links-content"
-                    id="explore"
-                  >
-                    <div class="nav-links-link-col">
-                      <button id=${this.NAV_LINKS.EXPLORE.TECH_ASSESSMENT.elId}>
-                      ${this.NAV_LINKS.EXPLORE.TECH_ASSESSMENT.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.EXPLORE.CX_LIBRARY.elId}>
-                      ${this.NAV_LINKS.EXPLORE.CX_LIBRARY.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.EXPLORE.BLOG.elId}>
-                      ${this.NAV_LINKS.EXPLORE.BLOG.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.EXPLORE.HELP_CENTER.elId}>
-                      ${this.NAV_LINKS.EXPLORE.HELP_CENTER.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.EXPLORE.VIDEO_TUTORIALS.elId}>
-                      ${this.NAV_LINKS.EXPLORE.VIDEO_TUTORIALS.text}
-                      </button>
-                      <button id=${this.NAV_LINKS.EXPLORE.DEVELOPER_TOOLS.elId}>
-                      ${this.NAV_LINKS.EXPLORE.DEVELOPER_TOOLS.text}
-                      </button>
-                    </div>
-                  </div>
-                  <div
-                    class="nav-links-background-pointer"
-                  ></div>
-                  <div
-                    class="nav-links-background"
-                    id="popover"
-                  ></div>
                 </div>
-            </div>
-            
-        
-      `;
+                <div
+                  class="nav-links-content"
+                  id="platform"
+                >
+                  <div class="nav-links-link-col">
+                    <h4>${this.NAV_LINKS.PLATFORM.OVERVIEW.text}</h4>
+                    <button id=${this.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION.elId}>
+                    ${this.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS.elId}>
+                    ${this.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS.text}
+                    </button>
+                  </div>
+                  <div class="nav-links-link-col">
+                    <h4>
+                    ${this.NAV_LINKS.PLATFORM.PRODUCTS.text}
+                    </h4>
+                    <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT.elId}>
+                    ${this.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM.elId}>
+                    ${this.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER.elId}>
+                    ${this.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.WIDGETS.elId}>
+                    ${this.NAV_LINKS.PLATFORM.PRODUCTS.WIDGETS.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT.elId}>
+                    ${this.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS.elId}>
+                    ${this.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS.text}
+                    </button>
+                  </div>
+                  <div class="nav-link-divider"></div>
+                  <div class="nav-links-link-col">
+                    <h4>${this.NAV_LINKS.PLATFORM.BOOSTERS.text}</h4>
+                    <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.SPOTTER.elId}>
+                    ${this.NAV_LINKS.PLATFORM.BOOSTERS.SPOTTER.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM.elId}>
+                    ${this.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES.elId}>
+                    ${this.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.PLATFORM.BOOSTERS.CSAT.elId}>
+                    ${this.NAV_LINKS.PLATFORM.BOOSTERS.CSAT.text}
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="nav-links-content"
+                  id="solutions"
+                >
+                  <div class="nav-links-link-col">
+                    <h4>${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.text}</h4>
+                    <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.elId}>
+                    ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.elId}>
+                    ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.text}
+                    </button>
+                  </div>
+                  <div class="nav-links-link-col">
+                    <h4>${this.NAV_LINKS.SOLUTIONS.USE_CASE.text}</h4>
+                    <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT.elId}>
+                    ${this.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE.elId}>
+                    ${this.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT.elId}>
+                    ${this.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS.elId}>
+                    ${this.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS.text}
+                    </button>
+                  </div>
+                </div>
+                <div class="nav-links-content" id="pricing"></div>
+                <div
+                  class="nav-links-content"
+                  id="explore"
+                >
+                  <div class="nav-links-link-col">
+                    <button id=${this.NAV_LINKS.EXPLORE.TECH_ASSESSMENT.elId}>
+                    ${this.NAV_LINKS.EXPLORE.TECH_ASSESSMENT.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.EXPLORE.CX_LIBRARY.elId}>
+                    ${this.NAV_LINKS.EXPLORE.CX_LIBRARY.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.EXPLORE.BLOG.elId}>
+                    ${this.NAV_LINKS.EXPLORE.BLOG.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.EXPLORE.HELP_CENTER.elId}>
+                    ${this.NAV_LINKS.EXPLORE.HELP_CENTER.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.EXPLORE.VIDEO_TUTORIALS.elId}>
+                    ${this.NAV_LINKS.EXPLORE.VIDEO_TUTORIALS.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.EXPLORE.DEVELOPER_TOOLS.elId}>
+                    ${this.NAV_LINKS.EXPLORE.DEVELOPER_TOOLS.text}
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="nav-links-background-pointer"
+                ></div>
+                <div
+                  class="nav-links-background"
+                  id="popover"
+                ></div>
+              </div>
+          </div>
+          
+      
+    `;
 
         this.shadowRoot
             .getElementById('nav-links-link-container')
@@ -609,63 +607,29 @@ class WaNavLinks extends HTMLElement {
             .getElementById('nav-links-link-explore')
             .addEventListener('mouseover', () => this.setActiveLink('explore'));
 
-        this.addLinkEvent(
-            this.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER
-        );
+        this.addLinkEvent(this.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT);
+        this.addLinkEvent(this.NAV_LINKS.WHY_ANSWERS.RESULTS_WITH_ANSWERS);
+        this.addLinkEvent(this.NAV_LINKS.WHY_ANSWERS.CUSTOMER_STORIES);
+        this.addLinkEvent(this.NAV_LINKS.WHY_ANSWERS.CS_SOLUTION_2021);
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.OVERVIEW.FULL_CS_SOLUTION);
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.OVERVIEW.INTEGRATIONS);
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.PRODUCTS.KNOWLEDGE_MANAGMENT);
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.PRODUCTS.TICKETING_STSTEM);
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.PRODUCTS.CALL_CENTER);
         this.addLinkEvent(this.NAV_LINKS.PLATFORM.PRODUCTS.WIDGETS);
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS
-        );
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.PRODUCTS.LIVE_CHAT);
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.PRODUCTS.INSIGHTS);
         this.addLinkEvent(this.NAV_LINKS.PLATFORM.BOOSTERS.SPOTTER);
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES
-        );
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.BOOSTERS.CONTROL_ROOM);
+        this.addLinkEvent(this.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES);
         this.addLinkEvent(this.NAV_LINKS.PLATFORM.BOOSTERS.CSAT);
-        this.addLinkEvent(
-            this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE
-        );
+        this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB);
+        this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE);
         this.addLinkEvent(
             this.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT
         );
-        this.addLinkEvent(
-            this.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE
-        );
-        this.addLinkEvent(
-            this.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT
-        );
+        this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.USE_CASE.SELF_SERVICE);
+        this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.USE_CASE.PROACTIVE_SUPPORT);
         this.addLinkEvent(
             this.NAV_LINKS.SOLUTIONS.USE_CASE.CUSTOMER_INTERACTIONS
         );
@@ -676,7 +640,6 @@ class WaNavLinks extends HTMLElement {
         this.addLinkEvent(this.NAV_LINKS.EXPLORE.HELP_CENTER);
         this.addLinkEvent(this.NAV_LINKS.EXPLORE.VIDEO_TUTORIALS);
         this.addLinkEvent(this.NAV_LINKS.EXPLORE.DEVELOPER_TOOLS);
-
     }
 
     connectedCallback() {
