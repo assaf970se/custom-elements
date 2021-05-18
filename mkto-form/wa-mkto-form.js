@@ -1,41 +1,42 @@
 const createMktoStyle = () => {
     const style = document.createElement('style');
     style.innerHTML = `
-    * {
-    box-sizing: border-box;
-    font-family: "Madefor", sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .wa-mkto-form-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .wa-mkto-form-container {
-    width: 400px;
-    height: 550px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
-  @media screen and (max-width: 600px) {
-    .wa-mkto-form-container {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  
-  .wa-mkto-form-title {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 30px;
-  }
-  
+        * {
+        box-sizing: border-box;
+        font-family: "Madefor", sans-serif;
+        margin: 0;
+        padding: 0;
+        }
+
+        .wa-mkto-form-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .wa-mkto-form-container {
+        width: 400px;
+        height: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        }
+        @media screen and (max-width: 600px) {
+        .wa-mkto-form-container {
+            width: 100%;
+            height: 100%;
+        }
+        }
+
+        .wa-mkto-form-title {
+        max-width: 300px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 30px;
+        }
+
 `;
     return style;
 };
@@ -47,7 +48,7 @@ const createMktoForm = (id) => {
     container.classList.add('wa-mkto-form-container');
     const title = document.createElement('div');
     title.classList.add('wa-mkto-form-title');
-    title.innerText = 'Schedule a 15 minute demo';
+    title.innerText = 'Schedule a 15 minute demo of Wix Answers';
     const form = document.createElement('form');
     form.id = `mktoForm_${id}`;
 
@@ -63,6 +64,7 @@ class WaMktoForm extends HTMLElement {
         super();
         this._mktoFormId;
         this._inputEmail = '';
+        this._inputBanner = '';
         try {
             console.log('MktoForms2: ', MktoForms2);
         } catch (err) {
@@ -76,6 +78,9 @@ class WaMktoForm extends HTMLElement {
         }
         if (this.hasAttribute('mktoinputemail')) {
             this._inputEmail = this.getAttribute('mktoinputemail');
+        }
+        if (this.hasAttribute('mktoinputbanner')) {
+            this._inputBanner = this.getAttribute('mktoinputbanner');
         }
         this.appendChild(createMktoStyle());
         this.appendChild(createMktoForm(this._mktoFormId));
@@ -98,20 +103,16 @@ class WaMktoForm extends HTMLElement {
 
                 if (
                     document.cookie
-                        .split(';')
-                        .some((item) => item.includes('_uc_last_referrer'))
+                    .split(';')
+                    .some((item) => item.includes('wamk_most_recent_ref'))
                 ) {
                     let encodedUrl = document.cookie
                         .split(';')
-                        .find((cookie) => cookie.includes('_uc_last_referrer'))
+                        .find((cookie) => cookie.includes('wamk_most_recent_ref'))
                         .split('=')[1];
                     let decodedUrl = decodeURIComponent(encodedUrl);
-                    let domainName = decodedUrl.split('.')[1];
                     form.setValues({
                         most_Recent_Referral_URL: decodedUrl || '',
-                    });
-                    form.setValues({
-                        most_Recent_Referral_Domain: domainName || '',
                     });
                 }
 
@@ -126,6 +127,13 @@ class WaMktoForm extends HTMLElement {
                     elTitle.innerText =
                         'A Wix Answers expert will be in touch with you shortly.';
                     setTimeout(() => {
+                        dataLayer.push({
+                            event: "customer-support-software",
+                            eventCategory: "Demo Request",
+                            eventAction: this._inputBanner,
+                            eventLabel: document.location.href
+                        });
+
                         const mktoFomSubmitted = new Event('mktoFomSubmitted');
                         this.dispatchEvent(mktoFomSubmitted);
                     }, 2000);
