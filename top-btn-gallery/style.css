@@ -1,0 +1,101 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  font-family: "Madefor", "Helvetica Neue", sans-serif;
+}
+
+.top-btn-gallery-container {
+  color: #002764;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 5px;
+  background-color: #f1f7ff;
+}
+@media screen and (max-width: 600px) {
+  .top-btn-gallery-container {
+    display: none;
+  }
+}
+
+.top-btn-gallery-container__btn-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #9370fe;
+}
+
+.top-btn-gallery-container__button {
+  background-color: #f1f7ff;
+  text-align: center;
+  flex-grow: 1;
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+}
+.top-btn-gallery-container__button:not(:last-child) {
+  border-right: 1px solid #9370fe;
+}
+.top-btn-gallery-container__button:hover {
+  background-color: #d8e8ff;
+}
+
+.top-btn-gallery-container__active-button {
+  background-color: #cde3ff;
+}
+
+.top-btn-gallery-container__content-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 70px 100px;
+}
+
+.top-btn-gallery-container__content-text {
+  max-width: 350px;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.top-btn-gallery-container__content-image {
+  max-width: 375px;
+}
+.top-btn-gallery-container__content-image img {
+  width: 100%;
+}
+
+.top-btn-gallery-container-mob {
+  position: relative;
+  margin: 0 auto;
+  color: #002764;
+  width: 90%;
+  border-radius: 5px;
+  background-color: #f1f7ff;
+}
+@media screen and (min-width: 600px) {
+  .top-btn-gallery-container-mob {
+    display: none;
+  }
+}
+.top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger {
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 20px;
+  background-color: #f1f7ff;
+  border-bottom: 1px solid#9370fe;
+}
+.top-btn-gallery-container-mob .top-btn-gallery-container-mob__content {
+  display: block;
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease, padding 0.3s linear;
+}
+.top-btn-gallery-container-mob .top-btn-gallery-container-mob__content p {
+  padding: 20px;
+  margin: 0;
+}
+.top-btn-gallery-container-mob .top-btn-gallery-container-mob__content.opened-content {
+  height: 150px;
+}

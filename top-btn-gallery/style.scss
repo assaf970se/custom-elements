@@ -1,0 +1,107 @@
+$main-text-color: #002764;
+$main-background-color: #f1f7ff;
+$main-border-color: #9370fe;
+
+* {
+    box-sizing: border-box;
+    font-family: 'Madefor', 'Helvetica Neue', sans-serif;
+}
+
+.top-btn-gallery-container {
+    color: $main-text-color;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 5px;
+    background-color: $main-background-color;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+}
+
+.top-btn-gallery-container__btn-container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #{$main-border-color};
+}
+
+.top-btn-gallery-container__button {
+    background-color: $main-background-color;
+    text-align: center;
+    flex-grow: 1;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+
+    &:not(:last-child) {
+        border-right: 1px solid $main-border-color;
+    }
+
+    &:hover {
+        background-color: darken($main-background-color, 5%);
+    }
+}
+
+.top-btn-gallery-container__active-button {
+    background-color: darken($main-background-color, 7%);
+}
+
+.top-btn-gallery-container__content-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 70px 100px;
+}
+
+.top-btn-gallery-container__content-text {
+    max-width: 350px;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.top-btn-gallery-container__content-image {
+    max-width: 375px;
+
+    img {
+        width: 100%;
+    }
+}
+
+.top-btn-gallery-container-mob {
+    @media screen and (min-width: 600px) {
+        display: none;
+    }
+    position: relative;
+    margin: 0 auto;
+    color: $main-text-color;
+    width: 90%;
+    border-radius: 5px;
+    background-color: $main-background-color;
+
+    .top-btn-gallery-container-mob__trigger {
+        text-decoration: none;
+        width: 100%;
+        display: block;
+        margin: 0;
+        padding: 20px;
+        background-color: $main-background-color;
+        border-bottom: 1px solid#{$main-border-color};
+    }
+    .top-btn-gallery-container-mob__content {
+        display: block;
+        padding: 0;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s ease, padding 0.3s linear;
+
+        p {
+            padding: 20px;
+            margin: 0;
+        }
+
+        &.opened-content {
+            height: 150px;
+        }
+    }
+}
