@@ -111,6 +111,10 @@ class WaTopBtnGallery extends HTMLElement {
               padding: 20px;
               background-color: #f1f7ff;
               border-bottom: 1px solid#9370fe;
+              color: #002764;
+            }
+            .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:active, .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:hover {
+              color: #002764;
             }
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__content {
               display: block;
@@ -125,7 +129,7 @@ class WaTopBtnGallery extends HTMLElement {
             }
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__content.opened-content {
               height: 150px;
-            }                                                     
+            }
             </style>
 
             <div class="top-btn-gallery-container">

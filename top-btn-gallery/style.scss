@@ -87,7 +87,14 @@ $main-border-color: #9370fe;
         padding: 20px;
         background-color: $main-background-color;
         border-bottom: 1px solid#{$main-border-color};
+        color: $main-text-color;
+
+        &:active,
+        &:hover {
+            color: $main-text-color;
+        }
     }
+
     .top-btn-gallery-container-mob__content {
         display: block;
         padding: 0;
