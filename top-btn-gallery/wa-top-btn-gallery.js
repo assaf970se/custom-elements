@@ -5,7 +5,7 @@ class WaTopBtnGallery extends HTMLElement {
         this._activeImg = `https://static.wixstatic.com/media/dba05e_2c415c704442477285a3d81e5b8a3cef~mv2.png`;
         this._activeTitle = `One inbox`;
         this._activeText = `Manage all real-time and offline support requests in one feed and easily jump between customer conversations without having to switch tabs.`;
-        this._activeBtn = 1;
+        this._activeBtn = 0;
         this._activeBtnMob = 1;
 
         this._title1 = `One inbox`;
@@ -25,8 +25,7 @@ class WaTopBtnGallery extends HTMLElement {
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
-            <style>
-            * {
+            <style>* {
               box-sizing: border-box;
               font-family: "Madefor", "Helvetica Neue", sans-serif;
             }
@@ -116,6 +115,16 @@ class WaTopBtnGallery extends HTMLElement {
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:active, .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:hover {
               color: #002764;
             }
+            .top-btn-gallery-container-mob .top-btn-gallery-container-mob__title-icon {
+              display: inline-block;
+              margin-left: 20px;
+              padding-bottom: 5px;
+              transform: rotate(0deg);
+              transition: transform 0.3s;
+            }
+            .top-btn-gallery-container-mob .top-btn-gallery-container-mob__title-icon.title-icon-opened {
+              transform: rotate(180deg);
+            }
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__content {
               display: block;
               padding: 0;
@@ -152,8 +161,8 @@ class WaTopBtnGallery extends HTMLElement {
             <div class="top-btn-gallery-container-mob__item">
                 <a id="btnMob-1" href="#tab-1" class="top-btn-gallery-container-mob__trigger">
                   ${this._title1}
-                <span style="margin-left: 20px;">▼</span></a>
-                <div id="tab-1" class="top-btn-gallery-container-mob__content opened-content">
+                <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-1">▼</span></a>
+                <div id="tab-1" class="top-btn-gallery-container-mob__content">
                     <p>
                         ${this._text1}
                     </p>
@@ -162,7 +171,7 @@ class WaTopBtnGallery extends HTMLElement {
             <div class="top-btn-gallery-container-mob__item">
                 <a id="btnMob-2" href="#tab-2" class="top-btn-gallery-container-mob__trigger">
                   ${this._title2}
-                <span style="margin-left: 20px;">▼</span></a>
+                <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-2">▼</span></a>
                 <div id="tab-2" class="top-btn-gallery-container-mob__content">
                     <p>
                         ${this._text2}
@@ -172,7 +181,7 @@ class WaTopBtnGallery extends HTMLElement {
             <div class="top-btn-gallery-container-mob__item">
                 <a id="btnMob-3" href="#tab-3" class="top-btn-gallery-container-mob__trigger">
                   ${this._title3}
-                <span style="margin-left: 20px;">▼</span></a>
+                <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-3">▼</span></a>
                 <div id="tab-3" class="top-btn-gallery-container-mob__content">
                     <p>
                         ${this._text3}
@@ -182,7 +191,7 @@ class WaTopBtnGallery extends HTMLElement {
             <div class="top-btn-gallery-container-mob__item">
                 <a id="btnMob-4" href="#tab-4" class="top-btn-gallery-container-mob__trigger">
                   ${this._title4}
-                <span style="margin-left: 20px;">▼</span></a>
+                <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-4">▼</span></a>
                 <div id="tab-4" class="top-btn-gallery-container-mob__content">
                     <p>
                         ${this._text4}
@@ -232,11 +241,26 @@ class WaTopBtnGallery extends HTMLElement {
     }
 
     switchTabContent(num) {
-        if (this._activeBtnMob === num) return;
+        if (this._activeBtnMob === num) {
+            this._activeBtnMob = 0;
+            this.shadowRoot
+                .querySelectorAll('.top-btn-gallery-container-mob__content')
+                .forEach((el) => el.classList.remove('opened-content'));
+            this.shadowRoot
+                .querySelectorAll('.top-btn-gallery-container-mob__title-icon')
+                .forEach((el) => el.classList.remove('title-icon-opened'));
+            return;
+        }
         this._activeBtnMob = num;
         this.shadowRoot
             .querySelectorAll('.top-btn-gallery-container-mob__content')
             .forEach((el) => el.classList.remove('opened-content'));
+        this.shadowRoot
+            .querySelectorAll('.top-btn-gallery-container-mob__title-icon')
+            .forEach((el) => el.classList.remove('title-icon-opened'));
+        this.shadowRoot
+            .getElementById('title-icon-' + num)
+            .classList.add('title-icon-opened');
         this.shadowRoot
             .getElementById('tab-' + num)
             .classList.add('opened-content');

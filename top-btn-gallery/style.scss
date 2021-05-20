@@ -95,6 +95,18 @@ $main-border-color: #9370fe;
         }
     }
 
+    .top-btn-gallery-container-mob__title-icon {
+        display: inline-block;
+        margin-left: 20px;
+        padding-bottom: 5px;
+        transform: rotate(0deg);
+        transition: transform 0.3s;
+
+        &.title-icon-opened {
+            transform: rotate(180deg);
+        }
+    }
+
     .top-btn-gallery-container-mob__content {
         display: block;
         padding: 0;

@@ -89,6 +89,16 @@
 .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:active, .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:hover {
   color: #002764;
 }
+.top-btn-gallery-container-mob .top-btn-gallery-container-mob__title-icon {
+  display: inline-block;
+  margin-left: 20px;
+  padding-bottom: 5px;
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+.top-btn-gallery-container-mob .top-btn-gallery-container-mob__title-icon.title-icon-opened {
+  transform: rotate(180deg);
+}
 .top-btn-gallery-container-mob .top-btn-gallery-container-mob__content {
   display: block;
   padding: 0;
