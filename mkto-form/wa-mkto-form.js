@@ -65,6 +65,10 @@ class WaMktoForm extends HTMLElement {
         this._mktoFormId;
         this._inputEmail = '';
         this._inputBanner = '';
+        
+        this._eventTrigger = '';
+        this._eventCategory = '';
+        
         try {
             console.log('MktoForms2: ', MktoForms2);
         } catch (err) {
@@ -81,6 +85,12 @@ class WaMktoForm extends HTMLElement {
         }
         if (this.hasAttribute('mktoinputbanner')) {
             this._inputBanner = this.getAttribute('mktoinputbanner');
+        }
+        if (this.hasAttribute('mktoeventtrigger')) {
+            this._eventTrigger = this.getAttribute('mktoeventtrigger');
+        }
+        if (this.hasAttribute('mktoeventcategory')) {
+            this._eventCategory = this.getAttribute('mktoeventcategory');
         }
         this.appendChild(createMktoStyle());
         this.appendChild(createMktoForm(this._mktoFormId));
@@ -128,8 +138,8 @@ class WaMktoForm extends HTMLElement {
                         'A Wix Answers expert will be in touch with you shortly.';
                     setTimeout(() => {
                         dataLayer.push({
-                            event: "customer-support-software",
-                            eventCategory: "Demo Request",
+                            event: this._eventTrigger,
+                            eventCategory: this._eventCategory,
                             eventAction: this._inputBanner,
                             eventLabel: document.location.href
                         });
