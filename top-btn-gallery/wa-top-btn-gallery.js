@@ -32,8 +32,9 @@ class WaTopBtnGallery extends HTMLElement {
             
             .top-btn-gallery-container {
               color: #002764;
-              width: 100%;
-              max-width: 1000px;
+              width: 850px !important;
+              margin: 0 auto;
+              max-width: 1000px !important;
               border-radius: 5px;
               background-color: #f1f7ff;
             }
@@ -111,6 +112,8 @@ class WaTopBtnGallery extends HTMLElement {
               background-color: #f1f7ff;
               border-bottom: 1px solid#9370fe;
               color: #002764;
+              font-size: 15px;
+              font-weight: 700;
             }
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:active, .top-btn-gallery-container-mob .top-btn-gallery-container-mob__trigger:hover {
               color: #002764;
@@ -121,6 +124,7 @@ class WaTopBtnGallery extends HTMLElement {
               padding-bottom: 5px;
               transform: rotate(0deg);
               transition: transform 0.3s;
+              font-size: 15px;
             }
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__title-icon.title-icon-opened {
               transform: rotate(180deg);
@@ -135,6 +139,7 @@ class WaTopBtnGallery extends HTMLElement {
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__content p {
               padding: 20px;
               margin: 0;
+              font-size: 14px;
             }
             .top-btn-gallery-container-mob .top-btn-gallery-container-mob__content.opened-content {
               height: 150px;
@@ -159,7 +164,7 @@ class WaTopBtnGallery extends HTMLElement {
         </div>
         <div class="top-btn-gallery-container-mob">
             <div class="top-btn-gallery-container-mob__item">
-                <a id="btnMob-1" href="#tab-1" class="top-btn-gallery-container-mob__trigger">
+                <a id="btnMob-1" class="top-btn-gallery-container-mob__trigger">
                   ${this._title1}
                 <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-1">▼</span></a>
                 <div id="tab-1" class="top-btn-gallery-container-mob__content">
@@ -169,7 +174,7 @@ class WaTopBtnGallery extends HTMLElement {
                 </div>
             </div>
             <div class="top-btn-gallery-container-mob__item">
-                <a id="btnMob-2" href="#tab-2" class="top-btn-gallery-container-mob__trigger">
+                <a id="btnMob-2" class="top-btn-gallery-container-mob__trigger">
                   ${this._title2}
                 <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-2">▼</span></a>
                 <div id="tab-2" class="top-btn-gallery-container-mob__content">
@@ -179,7 +184,7 @@ class WaTopBtnGallery extends HTMLElement {
                 </div>
             </div>
             <div class="top-btn-gallery-container-mob__item">
-                <a id="btnMob-3" href="#tab-3" class="top-btn-gallery-container-mob__trigger">
+                <a id="btnMob-3" class="top-btn-gallery-container-mob__trigger">
                   ${this._title3}
                 <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-3">▼</span></a>
                 <div id="tab-3" class="top-btn-gallery-container-mob__content">
@@ -189,7 +194,7 @@ class WaTopBtnGallery extends HTMLElement {
                 </div>
             </div>
             <div class="top-btn-gallery-container-mob__item">
-                <a id="btnMob-4" href="#tab-4" class="top-btn-gallery-container-mob__trigger">
+                <a id="btnMob-4" class="top-btn-gallery-container-mob__trigger">
                   ${this._title4}
                 <span class="top-btn-gallery-container-mob__title-icon" id="title-icon-4">▼</span></a>
                 <div id="tab-4" class="top-btn-gallery-container-mob__content">
@@ -285,7 +290,7 @@ class WaTopBtnGallery extends HTMLElement {
             );
         this.shadowRoot
             .getElementById('btn-' + this._activeBtn)
-            .classList.add('active-btn');
+            .classList.add('top-btn-gallery-container__active-button');
         // this.shadowRoot.getElementById('title').innerText = this._activeTitle;
         this.shadowRoot.getElementById('content-text').innerText =
             this._activeText;
