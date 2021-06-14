@@ -113,15 +113,15 @@ class WaNavLinks extends HTMLElement {
                         text: 'SMB',
                         link: 'https://www.wixanswers.com/smb',
                     },
-                    SMB_EFFICIENCY: {
-                        elId: 'sl-ct-smb-eff-link',
-                        text: 'SMB efficiency',
-                        link: 'https://www.wixanswers.com/smb-efficiency',
-                    },
                     ENTERPRISE: {
-                        elId: 'sl-ct-ent-link',
-                        text: 'Enterprise',
-                        link: 'https://www.wixanswers.com/enterprise',
+                      elId: 'sl-ct-ent-link',
+                      text: 'Enterprise',
+                      link: 'https://www.wixanswers.com/enterprise',
+                    },
+                    STARTUP: {
+                        elId: 'sl-ct-strtup-link',
+                        text: 'Startup',
+                        link: 'https://www.wixanswers.com/startup',
                     },
                 },
                 USE_CASE: {
@@ -528,11 +528,11 @@ class WaNavLinks extends HTMLElement {
                     <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.elId}>
                     ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB.text}
                     </button>
-                    <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB_EFFICIENCY.elId}>
-                    ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB_EFFICIENCY.text}
-                    </button>
                     <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.elId}>
                     ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE.text}
+                    </button>
+                    <button id=${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.STARTUP.elId}>
+                    ${this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.STARTUP.text}
                     </button>
                   </div>
                   <div class="nav-links-link-col">
@@ -632,7 +632,7 @@ class WaNavLinks extends HTMLElement {
         this.addLinkEvent(this.NAV_LINKS.PLATFORM.BOOSTERS.TOP_ISSUES);
         this.addLinkEvent(this.NAV_LINKS.PLATFORM.BOOSTERS.CSAT);
         this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB);
-        this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.SMB_EFFICIENCY);
+        this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.STARTUP);
         this.addLinkEvent(this.NAV_LINKS.SOLUTIONS.COMPANY_TYPE.ENTERPRISE);
         this.addLinkEvent(
             this.NAV_LINKS.SOLUTIONS.USE_CASE.OMNICHANNEL_SUPPORT
