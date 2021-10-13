@@ -195,256 +195,269 @@ class WaNavLinks extends HTMLElement {
         this.shadowRoot.innerHTML = `
         <style>
           * {
-            box-sizing: border-box;
-            font-family: "Madefor", sans-serif;
-            margin: 0;
-            padding: 0;
-          }
-          
+          box-sizing: border-box;
+          font-family: "Madefor", sans-serif;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .nav-links-container {
+          --main-text-color: #002764;
+          --link-color: #2288f9;
+          --text-white-color: #fff;
+          --nav-section-title-color: #99a9c1;
+          --nav-section-divider-color: #ccd4e0;
+          --link-font-size: 15px;
+          --btn-link-font-size: 13px;
+          --btn-link-width: 160px;
+          --btn-link-height: 42px;
+          --nav-link-width: fit-content;
+          --whyanswers-nav-background-width-px: 240px;
+          --whyanswers-nav-background-height-px: 230px;
+          --whyanswers-nav-background-left-px: -40px;
+          --platform-nav-background-width-px: 650px;
+          --platform-nav-background-height-px: 350px;
+          --platform-nav-background-left-px: 135px;
+          --solutions-nav-background-width-px: 380px;
+          --solutions-nav-background-height-px: 270px;
+          --solutions-nav-background-left-px: 262px;
+          --explore-nav-background-width-px: 270px;
+          --explore-nav-background-height-px: 300px;
+          --explore-nav-background-left-px: 497px;
+          --pricing-left-px: 350px;
+          color: var(--main-text-color);
+          padding-left: 30px;
+          perspective: 2000px;
+          display: flex;
+          align-items: center;
+        }
+        @media screen and (max-width: 650px) {
           .nav-links-container {
-            --main-text-color: #002764;
-            --link-color: #2288f9;
-            --text-white-color: #fff;
-            --nav-section-title-color: #99a9c1;
-            --nav-section-divider-color: #ccd4e0;
-            --link-font-size: 15px;
-            --btn-link-font-size: 13px;
-            --btn-link-width: 160px;
-            --btn-link-height: 42px;
-            --nav-link-width: 120px;
-            --whyanswers-nav-background-width-px: 240px;
-            --whyanswers-nav-background-height-px: 230px;
-            --platform-nav-background-width-px: 650px;
-            --platform-nav-background-height-px: 350px;
-            --solutions-nav-background-width-px: 380px;
-            --solutions-nav-background-height-px: 270px;
-            --explore-nav-background-width-px: 270px;
-            --explore-nav-background-height-px: 300px;
-            color: var(--main-text-color);
-            padding-left: 30px;
-            perspective: 2000px;
-            display: flex;
-            align-items: center;
+            display: none;
           }
-          @media screen and (max-width: 650px) {
-            .nav-links-container {
-              display: none;
-            }
-          }
-          
-          .nav-links-link-container {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-          }
-          .nav-links-link-container .nav-links-link {
-            padding: 0;
-            cursor: default;
-            width: fit-content;
-            text-decoration: none;
-            font-size: var(--link-font-size);
-            font-weight: 400;
-            height: 100%;
-            line-height: 70px;
-            background: none;
-            border: none;
-            outline: none;
-            color: var(--main-text-color);
-            letter-spacing: 0.6px;
-            margin-right: 60px;
-          }
-          .nav-links-link-container .nav-links-link.bold {
-            font-weight: bold;
-          }
-          .nav-links-link-container .nav-links-link.nav-links-link-pricing {
-            cursor: pointer;
-          }
-          .nav-links-link-container .nav-links-link.nav-links-link-pricing:hover {
-            color: var(--link-color);
-          }
-          
-          .nav-links-content {
-            position: absolute;
-            background: #fff;
-            visibility: hidden;
-            opacity: 0;
-            top: 60px;
-            border-radius: 6px;
-            display: flex;
-            letter-spacing: 0.4px;
-            justify-content: space-evenly;
-            z-index: 100;
-            padding-top: 50px;
-            transform-origin: center -100px;
-            transform: rotateX(-10deg);
-            box-shadow: 0 6px 10px -10px rgba(0, 0, 0, 0.2), 6px 0 10px -10px rgba(0, 0, 0, 0.2), -6px 0 10px -10px rgba(0, 0, 0, 0.2);
-            transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
-          }
-          .nav-links-content#why-answers {
-            width: var(--whyanswers-nav-background-width-px);
-            height: var(--whyanswers-nav-background-height-px);
-            left: -40px;
-          }
-          .nav-links-content#platform {
-            left: 135px;
-            width: var(--platform-nav-background-width-px);
-            height: var(--platform-nav-background-height-px);
-            z-index: 150;
-          }
-          .nav-links-content#solutions {
-            left: 262px;
-            width: var(--solutions-nav-background-width-px);
-            height: var(--solutions-nav-background-height-px);
-            z-index: 150;
-          }
-          .nav-links-content#explore {
-            left: 497px;
-            display: flex;
-            height: var(--explore-nav-background-height-px);
-            width: var(--whyanswers-nav-background-width-px);
-            z-index: 150;
-          }
-          .nav-links-content#pricing {
-            left: 350px;
-          }
-          .nav-links-content.why-answers {
-            opacity: 1;
-            z-index: 150;
-            visibility: visible;
-            transform: rotateX(0);
-          }
-          .nav-links-content.platform {
-            opacity: 1;
-            visibility: visible;
-            transform: rotateX(0);
-          }
-          .nav-links-content.platform .nav-link-divider {
-            width: 1px;
-            height: 250px;
-            border: solid 1px rgba(204, 212, 224, 0.5);
-            align-self: flex-start;
-          }
-          .nav-links-content.solutions {
-            opacity: 1;
-            visibility: visible;
-            transform: rotateX(0);
-          }
-          .nav-links-content.explore {
-            opacity: 1;
-            visibility: visible;
-            transform: rotateX(0);
-          }
-          .nav-links-content .nav-links-link-col {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-          }
-          .nav-links-content .nav-links-link-col h4 {
-            margin-top: 0;
-            color: var(--nav-section-title-color);
-            margin-bottom: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-          }
-          .nav-links-content .nav-links-link-col > p, .nav-links-content .nav-links-link-col > a, .nav-links-content .nav-links-link-col > button {
-            cursor: pointer;
-            color: inherit;
-            background: none;
-            outline: none;
-            border: none;
-            text-align: left;
-            font-size: var(--link-font-size);
-            font-weight: 400;
-            text-decoration: none;
-            letter-spacing: 0.6px;
-          }
-          .nav-links-content .nav-links-link-col > p:not(:last-child), .nav-links-content .nav-links-link-col > a:not(:last-child), .nav-links-content .nav-links-link-col > button:not(:last-child) {
-            margin-bottom: 18px;
-          }
-          .nav-links-content .nav-links-link-col > p:hover, .nav-links-content .nav-links-link-col > a:hover, .nav-links-content .nav-links-link-col > button:hover {
-            color: var(--link-color);
-          }
-          
-          .nav-cta-container {
-            height: 100%;
-            display: flex;
-            align-items: center;
-          }
-          .nav-cta-container .nav-cta-type-1 {
-            cursor: pointer;
-            color: var(--main-text-color);
-            font-size: var(--link-font-size);
-            text-decoration: none;
-            font-weight: 400;
-            width: 75px;
-            background: none;
-            border: none;
-            outline: none;
-            margin-right: 20px;
-          }
-          .nav-cta-container .nav-cta-type-1:hover {
-            color: var(--link-color);
-          }
-          .nav-cta-container .nav-cta-type-2 {
-            cursor: pointer;
-            font-size: var(--btn-link-font-size);
-            text-decoration: none;
-            font-weight: 400;
-            height: var(--btn-link-height);
-            width: var(--btn-link-width);
-            background: var(--link-color);
-            color: var(--text-white-color);
-            border-radius: 20px;
-            border: none;
-            outline: none;
-            margin-right: 20px;
-            letter-spacing: 0.8px;
-            opacity: 1;
-            text-transform: uppercase;
-            transition: opacity 0.5s;
-          }
-          .nav-cta-container .nav-cta-type-2:hover {
-            opacity: 0.8;
-          }
-          .nav-cta-container .nav-cta-type-3 {
-            font-size: var(--btn-link-font-size);
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: 400;
-            text-transform: uppercase;
-            height: var(--btn-link-height);
-            width: var(--btn-link-width);
-            color: var(--link-color);
-            background: var(--text-white-color);
-            border: 1px solid var(--link-color);
-            border-radius: 20px;
-            letter-spacing: 0.8px;
-            outline: none;
-            transition: color 0.5s, background 0.5s, border 0.5s;
-          }
-          .nav-cta-container .nav-cta-type-3:hover {
-            opacity: 0.8;
-          }
+        }
+        
+        .nav-links-link-container {
+          position: relative;
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+        .nav-links-link-container .nav-links-link {
+          padding: 0;
+          cursor: default;
+          width: var(--nav-link-width);
+          text-decoration: none;
+          font-size: var(--link-font-size);
+          font-weight: 400;
+          height: 100%;
+          line-height: 70px;
+          background: none;
+          border: none;
+          outline: none;
+          color: var(--main-text-color);
+          letter-spacing: 0.6px;
+          margin-right: 60px;
+        }
+        .nav-links-link-container .nav-links-link.bold {
+          font-weight: bold;
+        }
+        .nav-links-link-container .nav-links-link.nav-links-link-pricing {
+          cursor: pointer;
+        }
+        .nav-links-link-container .nav-links-link.nav-links-link-pricing:hover {
+          color: var(--link-color);
+        }
+        
+        .nav-links-content {
+          position: absolute;
+          background: #fff;
+          visibility: hidden;
+          opacity: 0;
+          top: 60px;
+          border-radius: 6px;
+          display: flex;
+          letter-spacing: 0.4px;
+          justify-content: space-evenly;
+          z-index: 100;
+          padding-top: 50px;
+          transform-origin: center -100px;
+          transform: rotateX(-10deg);
+          box-shadow: 0 6px 10px -10px rgba(0, 0, 0, 0.2), 6px 0 10px -10px rgba(0, 0, 0, 0.2), -6px 0 10px -10px rgba(0, 0, 0, 0.2);
+          transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
+        }
+        .nav-links-content#why-answers {
+          left: var(--whyanswers-nav-background-left-px);
+          width: var(--whyanswers-nav-background-width-px);
+          height: var(--whyanswers-nav-background-height-px);
+        }
+        .nav-links-content#platform {
+          left: var(--platform-nav-background-left-px);
+          width: var(--platform-nav-background-width-px);
+          height: var(--platform-nav-background-height-px);
+          z-index: 150;
+        }
+        .nav-links-content#solutions {
+          left: var(--solutions-nav-background-left-px);
+          width: var(--solutions-nav-background-width-px);
+          height: var(--solutions-nav-background-height-px);
+          z-index: 150;
+        }
+        .nav-links-content#explore {
+          left: var(--explore-nav-background-left-px);
+          display: flex;
+          height: var(--explore-nav-background-height-px);
+          width: var(--whyanswers-nav-background-width-px);
+          z-index: 150;
+        }
+        .nav-links-content#pricing {
+          left: var(--pricing-left-px);
+        }
+        .nav-links-content.why-answers {
+          opacity: 1;
+          z-index: 150;
+          visibility: visible;
+          transform: rotateX(0);
+        }
+        .nav-links-content.platform {
+          opacity: 1;
+          visibility: visible;
+          transform: rotateX(0);
+        }
+        .nav-links-content.platform .nav-link-divider {
+          width: 1px;
+          height: 250px;
+          border: solid 1px rgba(204, 212, 224, 0.5);
+          align-self: flex-start;
+        }
+        .nav-links-content.solutions {
+          opacity: 1;
+          visibility: visible;
+          transform: rotateX(0);
+        }
+        .nav-links-content.explore {
+          opacity: 1;
+          visibility: visible;
+          transform: rotateX(0);
+        }
+        .nav-links-content .nav-links-link-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+        .nav-links-content .nav-links-link-col h4 {
+          margin-top: 0;
+          color: var(--nav-section-title-color);
+          margin-bottom: 25px;
+          font-size: 14px;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+        .nav-links-content .nav-links-link-col > p, .nav-links-content .nav-links-link-col > a, .nav-links-content .nav-links-link-col > button {
+          cursor: pointer;
+          color: inherit;
+          background: none;
+          outline: none;
+          border: none;
+          text-align: left;
+          font-size: var(--link-font-size);
+          font-weight: 400;
+          text-decoration: none;
+          letter-spacing: 0.6px;
+        }
+        .nav-links-content .nav-links-link-col > p:not(:last-child), .nav-links-content .nav-links-link-col > a:not(:last-child), .nav-links-content .nav-links-link-col > button:not(:last-child) {
+          margin-bottom: 18px;
+        }
+        .nav-links-content .nav-links-link-col > p:hover, .nav-links-content .nav-links-link-col > a:hover, .nav-links-content .nav-links-link-col > button:hover {
+          color: var(--link-color);
+        }
+        
+        .nav-cta-container {
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+        .nav-cta-container .nav-cta-type-1 {
+          cursor: pointer;
+          color: var(--main-text-color);
+          font-size: var(--link-font-size);
+          text-decoration: none;
+          font-weight: 400;
+          width: 75px;
+          background: none;
+          border: none;
+          outline: none;
+          margin-right: 20px;
+        }
+        .nav-cta-container .nav-cta-type-1:hover {
+          color: var(--link-color);
+        }
+        .nav-cta-container .nav-cta-type-2 {
+          cursor: pointer;
+          font-size: var(--btn-link-font-size);
+          text-decoration: none;
+          font-weight: 400;
+          height: var(--btn-link-height);
+          width: var(--btn-link-width);
+          background: var(--link-color);
+          color: var(--text-white-color);
+          border-radius: 20px;
+          border: none;
+          outline: none;
+          margin-right: 20px;
+          letter-spacing: 0.8px;
+          opacity: 1;
+          text-transform: uppercase;
+          transition: opacity 0.5s;
+        }
+        .nav-cta-container .nav-cta-type-2:hover {
+          opacity: 0.8;
+        }
+        .nav-cta-container .nav-cta-type-3 {
+          font-size: var(--btn-link-font-size);
+          cursor: pointer;
+          text-decoration: none;
+          font-weight: 400;
+          text-transform: uppercase;
+          height: var(--btn-link-height);
+          width: var(--btn-link-width);
+          color: var(--link-color);
+          background: var(--text-white-color);
+          border: 1px solid var(--link-color);
+          border-radius: 20px;
+          letter-spacing: 0.8px;
+          outline: none;
+          transition: color 0.5s, background 0.5s, border 0.5s;
+        }
+        .nav-cta-container .nav-cta-type-3:hover {
+          opacity: 0.8;
+        }      
         </style>
           <div class="nav-links-container">
                 <div class="nav-links-link-container" id="nav-links-link-container">
-                <button class="nav-links-link" id="nav-links-link-why-answers">
+                <button 
+                  class="nav-links-link" 
+                  id=${this.NAV_LINKS.WHY_ANSWERS.elId}>
                   ${this.NAV_LINKS.WHY_ANSWERS.text}
                 </button>
-                <button class="nav-links-link" id="nav-links-link-platform">
+                <button 
+                  class="nav-links-link" 
+                  id=${this.NAV_LINKS.PLATFORM.elId}>
                 ${this.NAV_LINKS.PLATFORM.text}
                 </button>
-                <button class="nav-links-link" id="nav-links-link-solutions">
+                <button 
+                  class="nav-links-link" 
+                  id=${this.NAV_LINKS.SOLUTIONS.elId}>
                 ${this.NAV_LINKS.SOLUTIONS.text}
                 </button>
                 <button
                   class="nav-links-link nav-links-link-pricing"
-                  id="nav-links-link-pricing">
+                  id=${this.NAV_LINKS.PRICING.elId}>
                   ${this.NAV_LINKS.PRICING.text}
                 </button>
-                <button class="nav-links-link" id="nav-links-link-explore">
+                <button 
+                  class="nav-links-link" 
+                  id=${this.NAV_LINKS.EXPLORE.elId}>
                 ${this.NAV_LINKS.EXPLORE.text}
                 </button>
                 <div
@@ -586,33 +599,31 @@ class WaNavLinks extends HTMLElement {
                 ></div>
               </div>
           </div>
-          
-      
     `;
 
         this.shadowRoot
             .getElementById('nav-links-link-container')
             .addEventListener('mouseleave', () => this.setActiveLink(''));
         this.shadowRoot
-            .getElementById('nav-links-link-why-answers')
+            .getElementById(this.NAV_LINKS.WHY_ANSWERS.elId)
             .addEventListener('mouseover', () =>
                 this.setActiveLink('why-answers')
             );
         this.shadowRoot
-            .getElementById('nav-links-link-platform')
+            .getElementById(this.NAV_LINKS.PLATFORM.elId)
             .addEventListener('mouseover', () =>
                 this.setActiveLink('platform')
             );
         this.shadowRoot
-            .getElementById('nav-links-link-solutions')
+            .getElementById(this.NAV_LINKS.SOLUTIONS.elId)
             .addEventListener('mouseover', () =>
                 this.setActiveLink('solutions')
             );
         this.shadowRoot
-            .getElementById('nav-links-link-pricing')
+            .getElementById(this.NAV_LINKS.PRICING.elId)
             .addEventListener('mouseover', () => this.setActiveLink('pricing'));
         this.shadowRoot
-            .getElementById('nav-links-link-explore')
+            .getElementById(this.NAV_LINKS.EXPLORE.elId)
             .addEventListener('mouseover', () => this.setActiveLink('explore'));
 
         this.addLinkEvent(this.NAV_LINKS.WHY_ANSWERS.WHY_WERE_DIFFERENT);

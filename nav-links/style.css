@@ -15,15 +15,20 @@
   --btn-link-font-size: 13px;
   --btn-link-width: 160px;
   --btn-link-height: 42px;
-  --nav-link-width: 120px;
+  --nav-link-width: fit-content;
   --whyanswers-nav-background-width-px: 240px;
   --whyanswers-nav-background-height-px: 230px;
+  --whyanswers-nav-background-left-px: -40px;
   --platform-nav-background-width-px: 650px;
   --platform-nav-background-height-px: 350px;
+  --platform-nav-background-left-px: 135px;
   --solutions-nav-background-width-px: 380px;
   --solutions-nav-background-height-px: 270px;
+  --solutions-nav-background-left-px: 262px;
   --explore-nav-background-width-px: 270px;
   --explore-nav-background-height-px: 300px;
+  --explore-nav-background-left-px: 497px;
+  --pricing-left-px: 350px;
   color: var(--main-text-color);
   padding-left: 30px;
   perspective: 2000px;
@@ -45,7 +50,7 @@
 .nav-links-link-container .nav-links-link {
   padding: 0;
   cursor: default;
-  width: fit-content;
+  width: var(--nav-link-width);
   text-decoration: none;
   font-size: var(--link-font-size);
   font-weight: 400;
@@ -86,31 +91,31 @@
   transition: visibility 0.4s, opacity 0.4s, transform 0.4s;
 }
 .nav-links-content#why-answers {
+  left: var(--whyanswers-nav-background-left-px);
   width: var(--whyanswers-nav-background-width-px);
   height: var(--whyanswers-nav-background-height-px);
-  left: -40px;
 }
 .nav-links-content#platform {
-  left: 135px;
+  left: var(--platform-nav-background-left-px);
   width: var(--platform-nav-background-width-px);
   height: var(--platform-nav-background-height-px);
   z-index: 150;
 }
 .nav-links-content#solutions {
-  left: 262px;
+  left: var(--solutions-nav-background-left-px);
   width: var(--solutions-nav-background-width-px);
   height: var(--solutions-nav-background-height-px);
   z-index: 150;
 }
 .nav-links-content#explore {
-  left: 497px;
+  left: var(--explore-nav-background-left-px);
   display: flex;
   height: var(--explore-nav-background-height-px);
   width: var(--whyanswers-nav-background-width-px);
   z-index: 150;
 }
 .nav-links-content#pricing {
-  left: 350px;
+  left: var(--pricing-left-px);
 }
 .nav-links-content.why-answers {
   opacity: 1;
